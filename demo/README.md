@@ -2,6 +2,9 @@
 
 This repository includes folders and resources to help you install the Cloud Pak for Automation software for demonstration purposes on Red Hat OpenShift Cloud Platform (OCP) 3.11.
 
+> **Note:** In 20.0.1, patterns are not supported on ROKS ( IBM managed Openshift ). Steps to [Install the Cloud Pak for enterprise purposes](README.md#install-the-cloud-pak-for-enterprise-purposes) should be followed in that case. 
+
+
 Cloud Pak for Automation capabilities can be installed on OCP by running a deployment script and selecting a deployment pattern. A deployment pattern includes a single Cloud Pak capability, as well as Db2 and OpenLDAP when they are needed.
 
 > **Note:** In 20.0.1, patterns cannot be used to install the Cloud Pak for enterprise purposes.
