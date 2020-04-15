@@ -247,9 +247,13 @@ If you do not already have a cluster, then create one. From the [IBM Cloud Overv
 
    A custom resource (CR) YAML file is a configuration file that describes an ICP4ACluster instance and includes the parameters to install some or all of the components.
 
-   1. Make a copy of the template custom resource YAML file [descriptors/ibm_cp4a_cr_template.yaml](../../descriptors/ibm_cp4a_cr_template.yaml?raw=true) and name it appropriately for your deployment (for example descriptors/my_icp4a_cr.yaml).
+   1. For Production installs, make a copy of the template custom resource YAML file [descriptors/ibm_cp4a_cr_template.yaml](../../descriptors/ibm_cp4a_cr_template.yaml?raw=true) and name it appropriately for your deployment (for example descriptors/my_icp4a_cr.yaml). For Demo installs, instead of starting with above template make a copy of the sample custom resource YAML file [descriptors/ibm_cp4a_cr_sample.yaml](../../descriptors/ibm_cp4a_cr_sample.yaml?raw=true) and name it appropriately for your deployment (for example descriptors/my_icp4a_cr.yaml).
 
-      > **Important:** Because the maximum length of labels in Kubernetes is 63 characters, be careful with the lengths of your CR name and instance names. Some components can configure multiple instances, each instance must have a different name. The total length of the CR name and an instance name must not exceed 24 characters, otherwise some component deployments fail.
+      > **Important:** Because the maximum length of labels in Kubernetes is 63 characters, be careful with the lengths of your CR name and instance names. Some components can configure multiple instances, each instance must have a different name. The total length of the CR name and an instance name must not exceed 24 characters, otherwise some component deployments fail. 
+      
+      For Demo installs, the mechanism for creating routes on ROKS is [here](routes.md). 
+      
+      For Production installs, an external loadbalancer needs to be configured.
 
       You must use a single custom resource file to include all of the components that you want to deploy with an operator instance. Each time that you need to make an update or modification you must use this same file to apply the changes to your deployments. When you apply a new custom resource to an operator you must make sure that all previously deployed resources are included if you do not want the operator to delete them.
 
