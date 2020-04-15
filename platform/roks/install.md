@@ -203,11 +203,7 @@ If you do not already have a cluster, then create one. From the [IBM Cloud Overv
               - ojdbc8.jar
         ```
 
-   4. Copy these files to the operator pod by running the following commands:
-        ```bash
-        $ podname=$(oc get pod | grep ibm-cp4a-operator | awk '{print $1}')
-        $ kubectl cp $PATH_TO_JDBC/jdbc $NAMESPACE/$podname:/opt/ansible/share -c ansible
-        ```
+   
 
    ## Step 4: Deploy the operator manifest files to your cluster
 
@@ -240,6 +236,12 @@ If you do not already have a cluster, then create one. From the [IBM Cloud Overv
       ```bash
       $ oc logs -f deployment/ibm-cp4a-operator -c operator
       ```
+      
+   3. Copy the jdbc driver files, created in Step 4, to the operator pod by running the following commands:
+        ```bash
+        $ podname=$(oc get pod | grep ibm-cp4a-operator | awk '{print $1}')
+        $ kubectl cp $PATH_TO_JDBC/jdbc $NAMESPACE/$podname:/opt/ansible/share -c ansible
+        ```
 
    ## Step 5: Configure the software that you want to install
 
