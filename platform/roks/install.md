@@ -237,7 +237,7 @@ If you do not already have a cluster, then create one. From the [IBM Cloud Overv
       $ oc logs -f deployment/ibm-cp4a-operator -c operator
       ```
       
-   3. Copy the jdbc driver files, created in Step 4, to the operator pod by running the following commands:
+   3. Copy the jdbc driver files, created in Step 3, to the operator pod by running the following commands:
         ```bash
         $ podname=$(oc get pod | grep ibm-cp4a-operator | awk '{print $1}')
         $ kubectl cp $PATH_TO_JDBC/jdbc $NAMESPACE/$podname:/opt/ansible/share -c ansible
