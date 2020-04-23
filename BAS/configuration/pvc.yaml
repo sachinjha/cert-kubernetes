@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: jdbc-pvc
+spec:
+  storageClassName: ibmc-file-bronze
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi

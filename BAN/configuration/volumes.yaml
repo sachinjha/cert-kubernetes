@@ -1,0 +1,203 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: icn-cfgstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/icnconfigstore/icn/configDropin/overrides
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: icn-cfgstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: icn-cfgstore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: icn-cfgstore-pv
+  volumeName: icn-cfgstore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: icn-logstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/icnconfigstore/icn/logs
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: icn-logstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: icn-logstore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: icn-logstore-pv
+  volumeName: icn-logstore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: icn-pluginstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/icnconfigstore/icn/plugins
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: icn-pluginstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: icn-pluginstore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: icn-pluginstore-pv
+  volumeName: icn-pluginstore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: icn-vw-logstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/icnconfigstore/icn/viewerlog
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: icn-vw-logstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: icn-vw-logstore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: icn-vw-logstore-pv
+  volumeName: icn-vw-logstore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity: 
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: icn-vw-cachestore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/icnconfigstore/icn/viewercache
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: icn-vw-cachestore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: icn-vw-cachestore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: icn-vw-cachestore-pv
+  volumeName: icn-vw-cachestore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: icn-asperastore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/icnconfigstore/icn/aspera
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: icn-asperastore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: icn-asperastore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: icn-asperastore-pv
+  volumeName: icn-asperastore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi

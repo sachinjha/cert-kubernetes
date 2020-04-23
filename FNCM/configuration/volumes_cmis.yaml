@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cmis-cfgstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/cmis/configDropin/overrides
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: cmis-cfgstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cmis-cfgstore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: cmis-cfgstore-pv
+  volumeName: cmis-cfgstore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cmis-logstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/cmis/logs
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: cmis-logstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cmis-logstore-pvc
+  namespace: aca
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: cmis-logstore-pv
+  volumeName: cmis-logstore-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
