@@ -1,0 +1,66 @@
+[db2inst1@tds-ldap DB2]$ ./CreateBaseDB.sh 
+
+
+==================================================
+
+This script will create a new DB2 database to be used as the Content Analyzer Base database and initialize the database.
+
+If you prefer to create your own database, and only want the script to initialize the existing database, please exit this script and run 'InitBaseDB.sh'.
+
+==================================================
+
+
+Enter the name of the database to create. (The name must be 8 chars or less). If nothing is entered, we will use this default value :  BASECA
+
+
+We need a non-admin database user that BACA will use to access your BASE database.
+Do you want this script to create a new database user for you (This will create local OS user)? (Please enter y or n)
+n
+Please enter the name of an existing database user with read and write privileges for this database:
+db2inst1
+
+-- Information gathering is completed.  Script execution is starting ....
+
+Would you like to continue (Y/N):
+Y
+
+Running script: sql/CreateBaseDB.sql
+CREATE DATABASE BASECA AUTOMATIC STORAGE YES USING CODESET UTF-8 TERRITORY DEFAULT COLLATE USING SYSTEM PAGESIZE 32768
+DB20000I  The CREATE DATABASE command completed successfully.
+
+CONNECT TO BASECA 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = BASECA
+
+
+GRANT CONNECT,DATAACCESS ON DATABASE TO USER db2inst1 
+DB21034E  The command was processed as an SQL statement because it was not a 
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0554N  An authorization ID cannot grant a privilege or authority to itself. 
+SQLSTATE=42502
+
+
+Running script: sql/CreateBaseTable.sql
+CONNECT TO BASECA 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = BASECA
+
+
+SET SCHEMA db2inst1 
+DB20000I  The SQL command completed successfully.
+
+CREATE TABLE TENANTINFO (tenantid varchar(128) NOT NULL, ontology varchar(128) not null, tenanttype smallint not null with default, dailylimit smallint not null with default 0, rdbmsengine varchar(128)  not null, dbname varchar(255) not null, dbuser varchar(255) not null, bacaversion varchar(1024) not null, rdbmsconnection  varchar(1024) for bit data default null, mongoconnection varchar(1024)  for bit data default null, mongoadminconnection varchar(1024) for bit data default null, featureflags bigint not null with default 0, tenantdbversion varchar(255), CONSTRAINT tenantinfo_pkey PRIMARY KEY (tenantid, ontology) )
+DB20000I  The SQL command completed successfully.
+
+CONNECT RESET
+DB20000I  The SQL command completed successfully.
+
+[db2inst1@tds-ldap DB2]$ 

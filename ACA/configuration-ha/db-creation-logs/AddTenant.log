@@ -1,0 +1,1159 @@
+[db2inst1@tds-ldap DB2]$ ./AddTenant.sh 
+
+==================================================
+
+
+This script will create a DB2 database and initialize the database for a Content Analyzer tenant and load it with default data.
+
+If you prefer to create your own database, and only want the script to initialize the existing database, please exit this script and run 'InitTenantDB.sh'.
+
+==================================================
+
+Enter the tenant ID for the new tenant: (eg. t4900)
+Please enter a valid value for the tenant ID:
+t4900
+
+Enter the tenant type
+Choose the number equivalent.
+0. Enterprise
+1. Trial
+2. Internal
+0
+
+Enter the name of the new Content Analyzer Tenant database to create: 
+Please enter a valid value for the tenant database name of max length 8 :
+CATENANT
+
+Enter the data source name. This will generally be same name as the 
+database name unless you specifiy a different value in the 'db2dsdriver.cfg'. 
+If nothing is entered, we will use the following default value :  CATENANT
+
+
+Would you like to enable SSL to communicate with DB2 server?  (Please note that additional setup steps are required in order to use SSL with DB2.)
+Please enter 'Yes' or 'No'. If nothing is entered we will use the default value of ' No '
+  
+
+We need a non-admin database user that Content Analyzer will use to access your Content Analyzer Tenant database.
+
+Do you want this script to create a new database user for you (This will create local OS user)? (Please enter y or n)
+n
+Please enter the name of an existing database user with read and write privileges for the Content Analyzer Tenant database: 
+db2inst1
+Enter the password for the user: 
+Please confirm the password by entering it again:
+
+Enter the tenant ontology name. If nothing is entered, the default name will be used:  default
+
+
+-- Content Analyzer Base database info: --
+
+Enter the name of the Base Content Analyzer Base database. If nothing is entered, we will use the following default value :  BASECA
+
+
+Enter the name of the database user for the Content Analyzer Base database. If nothing is entered, we will use the following default value :  CABASEUSER
+db2inst1
+
+Now we will gather information about the initial Content Analyzer login user
+
+Please enter the company name for the initial Content Analyzer user:
+KPMG
+
+Please enter the first name for the initial Content Analyzer user:
+sachin
+
+Please enter the last name for the initial Content Analyzer user:
+user
+
+Please enter a valid email address for the initial Content Analyzer user:
+user@mail.com
+
+Please enter the login name for the initial Content Analyzer user. (IMPORTANT: if you are using LDAP, the login name must the same as your LDAP username.)
+bacaadmin
+
+-- Information gathering is completed.  Add tenant is about to begin.
+-- Please confirm these are the desired settings:
+ - tenant ID: t4900
+ - tenant type: 0
+ - daily limit: 0
+ - tenant database name: CATENANT
+ - database enabled for ssl : No
+ - tenant database user already exists and will not be created by this script
+ - tenant database user: db2inst1
+ - ontology name: default
+ - base database: BASECA
+ - base database user: db2inst1
+ - tenant company name: KPMG
+ - tenant first name: sachin
+ - tenant last name: user
+ - tenant email address: user@mail.com
+ - tenant login name: bacaadmin
+
+Would you like to continue (Y/N):
+Y
+
+Running script: sql/CreateDB.sql
+CREATE DATABASE CATENANT AUTOMATIC STORAGE YES USING CODESET UTF-8 TERRITORY DEFAULT COLLATE USING SYSTEM PAGESIZE 32768
+DB20000I  The CREATE DATABASE command completed successfully.
+
+CONNECT TO CATENANT 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = CATENANT
+
+
+GRANT CONNECT,DATAACCESS ON DATABASE TO USER db2inst1 
+DB21034E  The command was processed as an SQL statement because it was not a 
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0554N  An authorization ID cannot grant a privilege or authority to itself. 
+SQLSTATE=42502
+
+
+Running script: sql/CreateBacaSchema.sql
+CONNECT TO CATENANT 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = CATENANT
+
+
+CREATE SCHEMA default 
+DB20000I  The SQL command completed successfully.
+
+SET SCHEMA default 
+DB20000I  The SQL command completed successfully.
+
+
+Running script: sql/CreateBacaTables.sql
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The REORG command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The REORG command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+CONNECT RESET
+DB20000I  The SQL command completed successfully.
+
+Running script: sql/TablePermissions.sql
+CONNECT TO CATENANT 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = CATENANT
+
+
+GRANT ALTER ON TABLE default.DOC_CLASS TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.DOC_ALIAS TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.OBJECT_TYPE TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.KEY_CLASS TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.KEY_ALIAS TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.CWORD TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.HEADING TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.HEADING_ALIAS TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.USER_DETAIL TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.INTEGRATION TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.IMPORT_ONTOLOGY TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.API_INTEGRATIONS_OBJECTSSTORE TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.SMARTPAGES_OPTIONS TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.FONTS TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.FONTS_TRANSID TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.DB_BACKUP TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.PATTERN TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.DOCUMENT TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.TRAINING_LOG TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+GRANT ALTER ON TABLE default.IMPLEMENTATION TO USER db2inst1 
+DB20000I  The SQL command completed successfully.
+
+CONNECT RESET
+DB20000I  The SQL command completed successfully.
+
+
+Running script: sql/LoadData.sql
+CONNECT TO CATENANT 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = CATENANT
+
+
+SET SCHEMA default 
+DB20000I  The SQL command completed successfully.
+
+load from ./CSVFiles/doc_class.csv of del insert into doc_class 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/doc_class.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:45.183519".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "10" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "10".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:45.226107".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:45.229181".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:45.298123".
+
+
+Number of rows read         = 10
+Number of rows skipped      = 0
+Number of rows loaded       = 10
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 10
+
+
+load from ./CSVFiles/object_type.csv of del modified by identityoverride insert into object_type
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/object_type.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:45.528875".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "5" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "5".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:45.564940".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:45.568105".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:45.636555".
+
+
+Number of rows read         = 5
+Number of rows skipped      = 0
+Number of rows loaded       = 5
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 5
+
+
+load from ./CSVFiles/key_class.csv of del modified by identityoverride insert into key_class 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/key_class.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:45.919740".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "201" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "201".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:45.998168".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:46.002070".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:46.064063".
+
+
+Number of rows read         = 201
+Number of rows skipped      = 0
+Number of rows loaded       = 201
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 201
+
+
+load from ./CSVFiles/doc_alias.csv of del modified by identityoverride insert into doc_alias 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/doc_alias.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:46.288835".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "10" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "10".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:46.322582".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:46.325498".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:46.386201".
+
+
+Number of rows read         = 10
+Number of rows skipped      = 0
+Number of rows loaded       = 10
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 10
+
+
+load from ./CSVFiles/key_alias.csv of del modified by identityoverride insert into key_alias 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/key_alias.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:46.592928".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "238" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "238".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:46.628005".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:46.630703".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:46.685919".
+
+
+Number of rows read         = 238
+Number of rows skipped      = 0
+Number of rows loaded       = 238
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 238
+
+
+load from ./CSVFiles/cword.csv of del modified by identityoverride insert into cword 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/cword.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:46.902448".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "75" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "75".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:46.934862".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:46.937591".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:46.994679".
+
+
+Number of rows read         = 75
+Number of rows skipped      = 0
+Number of rows loaded       = 75
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 75
+
+
+load from ./CSVFiles/heading.csv of del modified by identityoverride insert into heading 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/heading.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:47.226607".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "2" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "2".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:47.260464".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:47.263442".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:47.323126".
+
+
+Number of rows read         = 2
+Number of rows skipped      = 0
+Number of rows loaded       = 2
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 2
+
+
+load from ./CSVFiles/heading_alias.csv of del modified by identityoverride insert into heading_alias 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/heading_alias.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:47.541203".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "2" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "2".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:47.572399".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:47.575043".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:47.641835".
+
+
+Number of rows read         = 2
+Number of rows skipped      = 0
+Number of rows loaded       = 2
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 2
+
+
+load from ./CSVFiles/key_class_dc.csv of del modified by identityoverride insert into key_class_dc 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/key_class_dc.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:47.867246".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "201" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "201".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:47.898274".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:47.901026".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:47.961144".
+
+
+Number of rows read         = 201
+Number of rows skipped      = 0
+Number of rows loaded       = 201
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 201
+
+
+load from ./CSVFiles/doc_alias_dc.csv of del modified by identityoverride insert into doc_alias_dc 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/doc_alias_dc.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:48.156805".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "10" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "10".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:48.190113".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:48.194124".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:48.255084".
+
+
+Number of rows read         = 10
+Number of rows skipped      = 0
+Number of rows loaded       = 10
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 10
+
+
+load from ./CSVFiles/key_alias_dc.csv of del modified by identityoverride insert into key_alias_dc 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/key_alias_dc.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:48.457830".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "255" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "255".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:48.492907".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:48.496157".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:48.560164".
+
+
+Number of rows read         = 255
+Number of rows skipped      = 0
+Number of rows loaded       = 255
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 255
+
+
+load from ./CSVFiles/key_alias_kc.csv of del modified by identityoverride insert into key_alias_kc 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/key_alias_kc.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:48.772215".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "255" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "255".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:48.808806".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:48.811784".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:48.869664".
+
+
+Number of rows read         = 255
+Number of rows skipped      = 0
+Number of rows loaded       = 255
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 255
+
+
+load from ./CSVFiles/heading_dc.csv of del modified by identityoverride insert into heading_dc 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/heading_dc.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:49.067405".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "2" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "2".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:49.098701".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:49.101409".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:49.158268".
+
+
+Number of rows read         = 2
+Number of rows skipped      = 0
+Number of rows loaded       = 2
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 2
+
+
+load from ./CSVFiles/heading_alias_dc.csv of del modified by identityoverride insert into heading_alias_dc 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/heading_alias_dc.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:49.356155".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "2" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "2".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:49.387651".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:49.390463".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:49.445846".
+
+
+Number of rows read         = 2
+Number of rows skipped      = 0
+Number of rows loaded       = 2
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 2
+
+
+load from ./CSVFiles/heading_alias_h.csv of del modified by identityoverride insert into heading_alias_h 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/heading_alias_h.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:49.643849".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "2" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "2".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:49.676900".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:49.679974".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:49.743535".
+
+
+Number of rows read         = 2
+Number of rows skipped      = 0
+Number of rows loaded       = 2
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 2
+
+
+load from ./CSVFiles/cword_dc.csv of del modified by identityoverride insert into cword_dc 
+SQL3501W  The table space(s) in which the table resides will not be placed in 
+backup pending state since forward recovery is disabled for the database.
+
+SQL3551W  The table contains at least one GENERATED ALWAYS column that the 
+utility will override.
+
+SQL3109N  The utility is beginning to load data from file 
+"/home/db2inst1/CP4Auto/ACA/DB2/CSVFiles/cword_dc.csv".
+
+SQL3500W  The utility is beginning the "LOAD" phase at time "05/06/2020 
+08:37:49.943824".
+
+SQL3519W  Begin Load Consistency Point. Input record count = "0".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3110N  The utility has completed processing.  "75" rows were read from the 
+input file.
+
+SQL3519W  Begin Load Consistency Point. Input record count = "75".
+
+SQL3520W  Load Consistency Point was successful.
+
+SQL3515W  The utility has finished the "LOAD" phase at time "05/06/2020 
+08:37:49.975101".
+
+SQL3500W  The utility is beginning the "BUILD" phase at time "05/06/2020 
+08:37:49.977822".
+
+SQL3213I  The indexing mode is "REBUILD".
+
+SQL3515W  The utility has finished the "BUILD" phase at time "05/06/2020 
+08:37:50.036060".
+
+
+Number of rows read         = 75
+Number of rows skipped      = 0
+Number of rows loaded       = 75
+Number of rows rejected     = 0
+Number of rows deleted      = 0
+Number of rows committed    = 75
+
+
+CONNECT RESET
+DB20000I  The SQL command completed successfully.
+
+
+Running script: sql/InsertTenant.sql
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = BASECA
+
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+DB20000I  The SQL command completed successfully.
+
+
+Running script: sql/SetIntegrity.sql
+CONNECT TO CATENANT 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = CATENANT
+
+
+SET SCHEMA default 
+DB20000I  The SQL command completed successfully.
+
+set integrity for key_class immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for key_class_dc immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for doc_alias_dc immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for key_alias_dc immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for key_alias_kc immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for heading_dc immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for heading_alias_dc immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for heading_alias_h immediate checked 
+DB20000I  The SQL command completed successfully.
+
+set integrity for cword_dc immediate checked 
+DB20000I  The SQL command completed successfully.
+
+alter table doc_class alter column doc_class_id restart with 10 
+DB20000I  The SQL command completed successfully.
+
+alter table doc_alias alter column doc_alias_id restart with 11 
+DB20000I  The SQL command completed successfully.
+
+alter table key_class alter column key_class_id restart with 202 
+DB20000I  The SQL command completed successfully.
+
+alter table key_alias alter column key_alias_id restart with 239 
+DB20000I  The SQL command completed successfully.
+
+alter table cword alter column cword_id restart with 76 
+DB20000I  The SQL command completed successfully.
+
+alter table heading alter column heading_id restart with 3 
+DB20000I  The SQL command completed successfully.
+
+alter table heading_alias alter column heading_alias_id restart with 3 
+DB20000I  The SQL command completed successfully.
+
+alter table object_type alter column object_type_id restart with 6 
+DB20000I  The SQL command completed successfully.
+
+CONNECT RESET
+DB20000I  The SQL command completed successfully.
+
+
+Running script: sql/InsertUser.sql
+connect to CATENANT 
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = CATENANT
+
+
+set schema default 
+DB20000I  The SQL command completed successfully.
+
+insert into user_detail (email,first_name,last_name,user_name,company,expire) values ('user@mail.com','sachin','user','bacaadmin','KPMG',10080) 
+DB20000I  The SQL command completed successfully.
+
+insert into login_detail (user_id,role,status,logged_in) select user_id,'Admin','1',0 from user_detail where email='user@mail.com' 
+DB20000I  The SQL command completed successfully.
+
+connect reset 
+DB20000I  The SQL command completed successfully.
+
+
+-- Add completed succesfully.  Tenant ID: t4900 , Ontology: default 
+
+-- URL (replace frontend with your frontend host): https://frontend/?tid=t4900&ont=default
+[db2inst1@tds-ldap DB2]$ 
