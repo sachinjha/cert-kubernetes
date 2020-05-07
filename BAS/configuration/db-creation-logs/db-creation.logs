@@ -1,0 +1,53 @@
+[db2inst1@tds-ldap BAS]$ db2 -tvmf bastudio.sql 
+create database BASTUDIO automatic storage yes using codeset UTF-8 territory US pagesize 32768
+DB20000I  The CREATE DATABASE command completed successfully.
+
+connect to BASTUDIO
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = BASTUDIO
+
+
+CREATE USER TEMPORARY TABLESPACE USRTMPSPC1
+DB20000I  The SQL command completed successfully.
+
+UPDATE DB CFG FOR BASTUDIO USING LOGFILSIZ 16384 DEFERRED
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+
+UPDATE DB CFG FOR BASTUDIO USING LOGSECOND 64 IMMEDIATE
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+
+grant dbadm on database to user db2inst1
+DB21034E  The command was processed as an SQL statement because it was not a 
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0554N  An authorization ID cannot grant a privilege or authority to itself. 
+SQLSTATE=42502
+
+connect reset
+DB20000I  The SQL command completed successfully.
+
+[db2inst1@tds-ldap BAS]$ mv ae.sql appengine.sql
+[db2inst1@tds-ldap BAS]$ db2 -tvmf appengine.sql 
+create database AESTUDIO automatic storage yes using codeset UTF-8 territory US pagesize 32768
+DB20000I  The CREATE DATABASE command completed successfully.
+
+connect to AESTUDIO
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.1.1
+ SQL authorization ID   = DB2INST1
+ Local database alias   = AESTUDIO
+
+
+grant dbadm on database to user db2inst1 
+DB21034E  The command was processed as an SQL statement because it was not a 
+valid Command Line Processor command.  During SQL processing it returned:
+SQL0554N  An authorization ID cannot grant a privilege or authority to itself. 
+SQLSTATE=42502
+
+connect reset
+DB20000I  The SQL command completed successfully.
