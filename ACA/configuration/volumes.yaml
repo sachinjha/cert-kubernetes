@@ -10,7 +10,7 @@ spec:
     storage: 300Gi
   nfs:
     path: /opt/nfs2/aca/caop/data
-    server: 169.60.191.34
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
@@ -39,7 +39,7 @@ spec:
     storage: 50Gi
   nfs:
     path: /opt/nfs2/aca/caop/log
-    server: 169.60.191.34
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
@@ -68,7 +68,7 @@ spec:
     storage: 20Gi
   nfs:
     path: /opt/nfs2/aca/caop/config
-    server: 169.60.191.34
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
