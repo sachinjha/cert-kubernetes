@@ -1,0 +1,25 @@
+Sachins-MacBook-Pro-2:tls sachinkumarjha$ openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem
+Generating a 2048 bit RSA private key
+....................+++
+.....................................................+++
+writing new private key to 'key.pem'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) []:IN
+State or Province Name (full name) []:MH
+Locality Name (eg, city) []:Pune
+Organization Name (eg, company) []:IBM
+Organizational Unit Name (eg, section) []:ISL 
+Common Name (eg, fully qualified host name) []:adw-management.kpmg-automation.gsi-labs.cloud.ibm.com
+Email Address []:sachinkj@in.ibm.com
+Sachins-MacBook-Pro-2:tls sachinkumarjha$ ls
+certificate.pem	key.pem		tls.crt		tls.key
+Sachins-MacBook-Pro-2:tls sachinkumarjha$ cat certificate.pem | base64
+LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQwRENDQXJnQ0NRQ2pNZ3IxTjdHZnBEQU5CZ2txaGtpRzl3MEJBUXNGQURDQnFURUxNQWtHQTFVRUJoTUMKU1U0eEN6QUpCZ05WQkFnTUFrMUlNUTB3Q3dZRFZRUUhEQVJRZFc1bE1Rd3dDZ1lEVlFRS0RBTkpRazB4RERBSwpCZ05WQkFzTUEwbFRUREUrTUR3R0ExVUVBd3cxWVdSM0xXMWhibUZuWlcxbGJuUXVhM0J0WnkxaGRYUnZiV0YwCmFXOXVMbWR6YVMxc1lXSnpMbU5zYjNWa0xtbGliUzVqYjIweElqQWdCZ2txaGtpRzl3MEJDUUVXRTNOaFkyaHAKYm10cVFHbHVMbWxpYlM1amIyMHdIaGNOTWpBd05URXpNRFV6TURRMFdoY05NakV3TlRFek1EVXpNRFEwV2pDQgpxVEVMTUFrR0ExVUVCaE1DU1U0eEN6QUpCZ05WQkFnTUFrMUlNUTB3Q3dZRFZRUUhEQVJRZFc1bE1Rd3dDZ1lEClZRUUtEQU5KUWsweEREQUtCZ05WQkFzTUEwbFRUREUrTUR3R0ExVUVBd3cxWVdSM0xXMWhibUZuWlcxbGJuUXUKYTNCdFp5MWhkWFJ2YldGMGFXOXVMbWR6YVMxc1lXSnpMbU5zYjNWa0xtbGliUzVqYjIweElqQWdCZ2txaGtpRwo5dzBCQ1FFV0UzTmhZMmhwYm10cVFHbHVMbWxpYlM1amIyMHdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCCkR3QXdnZ0VLQW9JQkFRRFhzSjZPNXMvbU5zb2JWYUpTem0zTnd6dGoxZlpvbmVLSDF1dFNXRkVxamNaSHplN24KaGtoQUVUaVY0dW1ncDdSb3NuUHNkZGg2ZlhueXJNeVVad2x1S0lMVGZDa0kreWllTDZ1MXNGbFo1L1diMTF1MgpCMGxJRk5BMmg5NkFDa1RHVm5BQkE4RVpkMm9HTXNqVjZUVjErcVUwU21WdGRrK2QvRUlJWEpIMEcwNWxRRkZrCmJXWFVVS1lsa1g2QUFXZXp2a2lKcXMzWEs5ZXBCN1k1ZWc0RitsVENMb3RkZlJQTlRkM2NpVDJ3VXp6L3o1ZVcKbjE5R1Y5Z0FxSVY2T1ZSTm5UTmRlMEpwRTF1dnk1ZHNtVXBwV29lb01URnNUN3NURFZ6WDZKUldBSk1wZHh2OAp3NkwzN3FLZmYyZ3lTWG1Eb1gxYmVHV0NHMitULzloVG1xaWxBZ01CQUFFd0RRWUpLb1pJaHZjTkFRRUxCUUFECmdnRUJBRDJRK3FSc1NBc1Vkc1VZM2pDTjhodXJrWnlJckIrcndQR0tmL094NXBFOFdESkp3NGpzTmhCb001YzIKcDZtRXBlUzhTeitMRHlJVkg0dUFPUUlCTG5zU01MTkxCVzZFQkJBY0pZeEkwWllLK2VXQmEzZTVQT3JFcmVXNwpzeW1IOWRSamhSZHNJT1Z0MkJ0ZGRMVjVUL2tyNi9ydEl4YWk3YkI4ME80OGtYcTFFMGFGU285NVN6RG4zWml5CnhDVnF0ZTV4Umc3dFQ5YktLSzl3Nk9zckR4MGM5TjRFRXhFRWJqUVptYVFBY09scTJ0MVE0WHcrNSt1ZDBtS0kKanlJQ2V6SlNHTWVLRERWeEpoYkljMXVTVE42ZjlNVkpweXVHU3ZCUkt0UThKU0tZWDBEQ1Mzemp6MDUyTExwRgpYNDJISUU4U1dMZkh4bU1yazNYVjNveWdmWk09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+Sachins-MacBook-Pro-2:tls sachinkumarjha$ cat key.pem | base64
