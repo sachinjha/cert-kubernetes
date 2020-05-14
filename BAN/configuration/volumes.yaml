@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /opt/nfs2/icnconfigstore/icn/configDropin/overrides
+    path: /opt/nfs2/icn/configDropin/overrides
     server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-cfgstore-pv
@@ -42,7 +42,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /opt/nfs2/icnconfigstore/icn/logs
+    path: /opt/nfs2/icn/logs
     server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-logstore-pv
@@ -76,7 +76,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /opt/nfs2/icnconfigstore/icn/plugins
+    path: /opt/nfs2/icn/plugins
     server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-pluginstore-pv
@@ -110,7 +110,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /opt/nfs2/icnconfigstore/icn/viewerlog
+    path: /opt/nfs2/icn/viewerlog
     server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-vw-logstore-pv
@@ -144,7 +144,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /opt/nfs2/icnconfigstore/icn/viewercache
+    path: /opt/nfs2/icn/viewercache
     server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-vw-cachestore-pv
@@ -178,7 +178,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /opt/nfs2/icnconfigstore/icn/aspera
+    path: /opt/nfs2/icn/aspera
     server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-asperastore-pv
