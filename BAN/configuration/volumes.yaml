@@ -9,7 +9,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/icn/configDropin/overrides
-    server: <NFS SERVER>
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-cfgstore-pv
 ---
@@ -17,7 +17,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: icn-cfgstore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -43,7 +42,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/icn/logs
-    server: <NFS SERVER>
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-logstore-pv
 ---
@@ -51,7 +50,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: icn-logstore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -77,7 +75,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/icn/plugins
-    server: <NFS SERVER>
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-pluginstore-pv
 ---
@@ -85,7 +83,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: icn-pluginstore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -111,7 +108,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/icn/viewerlog
-    server: <NFS SERVER>
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-vw-logstore-pv
 ---
@@ -119,7 +116,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: icn-vw-logstore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -145,7 +141,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/icn/viewercache
-    server: <NFS SERVER>
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-vw-cachestore-pv
 ---
@@ -153,7 +149,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: icn-vw-cachestore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -179,7 +174,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/icn/aspera
-    server: <NFS SERVER>
+    server: <NFS-SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: icn-asperastore-pv
 ---
@@ -187,7 +182,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: icn-asperastore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
