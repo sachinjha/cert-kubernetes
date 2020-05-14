@@ -17,7 +17,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cpe-cfgstore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -51,7 +50,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cpe-logstore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -85,7 +83,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cpe-fnlogstore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -119,7 +116,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cpe-bootstrap-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -153,7 +149,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cpe-textext-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -187,7 +182,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cpe-icmrules-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
@@ -221,7 +215,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cpe-filestore-pvc
-  namespace: aca
 spec:
   accessModes:
   - ReadWriteMany
