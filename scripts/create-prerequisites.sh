@@ -68,3 +68,20 @@ oc apply -f ../FNCM/configuration/volumes_cmis.yaml
 oc apply -f ../FNCM/configuration/volumes_cpe.yaml
 oc apply -f ../FNCM/configuration/graphql_volume.yaml
 
+
+
+######################## AAE  ########################
+
+oc apply -f ../AAE/configuration/secrets.yaml
+
+######################## IAWS  ########################
+
+
+######################## IAWS  ########################
+
+oc create serviceaccount ibm-pfs-es-service-account
+oc apply -f ../IAWS/configuration/ibm-pfs-privileged-scc.yaml
+oc adm policy add-scc-to-user ibm-pfs-privileged-scc -z ibm-pfs-es-service-account
+oc apply -f ../IAWS/configuration/secrets.yaml
+kubectl create secret generic wfs-lombardi-custom-xml-secret --from-file=sensitiveCustomConfig=../IAWS/configuration/100Custom.xml
+
