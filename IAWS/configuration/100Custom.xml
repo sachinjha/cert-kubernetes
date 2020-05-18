@@ -1,0 +1,9 @@
+<properties>                                                                                                                                                                                       
+  <!--Properties file for customer cluster scoped properties-->                                                                                                                                    
+  <server merge="mergeChildren">                                                                                                                                                                   
+    <search-index merge="mergeChildren">                                                                                                                                                           
+        <!-- For the instance list, we need up-to-date process instance status on all task documents -->                                                                                           
+        <task-index-update-completed-tasks merge="replace">true</task-index-update-completed-tasks>                                                                                                
+     </search-index>                                                                                                                                                                               
+ </server>                                                                                                                                                                                         
+</properties>
