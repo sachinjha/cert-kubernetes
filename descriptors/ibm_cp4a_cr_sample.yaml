@@ -40,20 +40,20 @@ spec:
       pull_policy: IfNotPresent
     root_ca_secret: icp4a-root-ca
     sc_deployment_platform: OCP
-    sc_deployment_hostname_suffix: "169.48.134.155.nip.io"
+    sc_deployment_hostname_suffix: "<LOADBALANCER-PUBLICIP>.nip.io"
     trusted_certificate_list: []
     encryption_key_secret: icp4a-shared-encryption-key
   ldap_configuration:
     lc_selected_ldap_type: "IBM Security Directory Server"  
-    lc_ldap_server: "150.238.37.50"
+    lc_ldap_server: "<LDAP-SERVER>"
     lc_ldap_port: "389"
     lc_bind_secret: ldap-bind-secret # Secret is expected to have ldapUsername and ldapPassword keys, optional if your LDAP server allows anonymous bind.
-    lc_ldap_base_dn: dc=GSI-Labs-Cognizant,dc=cloud
+    lc_ldap_base_dn: O=IBM,C=US  # if you used a different base DN during TDS install, update this.
     lc_ldap_ssl_enabled: false
     lc_ldap_ssl_secret_name: null
     lc_ldap_user_name_attribute: "*:cn"
     lc_ldap_user_display_name_attr: "cn"
-    lc_ldap_group_base_dn: dc=GSI-Labs-Cognizant,dc=cloud
+    lc_ldap_group_base_dn: O=IBM,C=US
     lc_ldap_group_name_attribute: "*:cn"
     lc_ldap_group_display_name_attr: "cn"
     lc_ldap_group_membership_search_filter: "(|(&(objectclass=groupofnames)(member={0}))(&(objectclass=groupofuniquenames)(uniquemember={0})))"
@@ -62,78 +62,46 @@ spec:
     tds:
       lc_user_filter: "(&(cn=%v)(objectclass=person))"
       lc_group_filter: "(&(cn=%v)(|(objectclass=groupofnames)(objectclass=groupofuniquenames)(objectclass=groupofurls)))"
-    # the candidate value is "IBM Security Directory Server" or "Microsoft Active Directory"
-    # lc_selected_ldap_type: "IBM Security Directory Server"
-    # lc_ldap_server: "<hostname>"
-    # lc_ldap_port: "389"
-    # lc_bind_secret: ldap-bind-secret # secret is expected to have ldapUsername and ldapPassword keys
-    # lc_ldap_base_dn: "dc=hqpsidcdom,dc=com"
-    # lc_ldap_ssl_enabled: false
-    # lc_ldap_ssl_secret_name: ""
-    # lc_ldap_user_name_attribute: "*:cn"
-    # lc_ldap_user_display_name_attr: "cn"
-    # lc_ldap_group_base_dn: "dc=hqpsidcdom,dc=com"
-    # lc_ldap_group_name_attribute: "*:cn"
-    # lc_ldap_group_display_name_attr: "cn"
-    # lc_ldap_group_membership_search_filter: "(|(&(objectclass=groupofnames)(member={0}))(&(objectclass=groupofuniquenames)(uniquemember={0})))"
-    # lc_ldap_group_member_id_map: "groupofnames:member"
-    # lc_ldap_max_search_results: 4500
-    # ca_ldap_configuration:
-    #   lc_user_filter: "(&(cn={{ '{{' }}username{{ '}}'}})(objectclass=person))"
-    #   lc_ldap_self_signed_crt: "" #true or false when lc_ldap_ssl_enabled: true
-    # ad:
-    #   lc_ad_gc_host: ""
-    #   lc_ad_gc_port: ""
-    #   lc_user_filter: "(&(cn=%v)(objectclass=person))"
-    #   lc_group_filter: "(&(cn=%v)(|(objectclass=groupofnames)(objectclass=groupofuniquenames)(objectclass=groupofurls)))"
-    # tds:
-    #   lc_user_filter: "(&(cn=%v)(objectclass=person))"
-    #   lc_group_filter: "(&(cn=%v)(|(objectclass=groupofnames)(objectclass=groupofuniquenames)(objectclass=groupofurls)))"
-  #ext_ldap_configuration:
+  ext_ldap_configuration:
   #   # the candidate value is "IBM Security Directory Server" or "Microsoft Active Directory"
-  #   lc_selected_ldap_type: "IBM Security Directory Server"
-  #   lc_ldap_server: "<hostname>"
-  #   lc_ldap_port: "389"
-  #   lc_bind_secret: ext-ldap-bind-secret # secret is expected to have ldapUsername and ldapPassword keys
-  #   lc_ldap_base_dn: "O=LOCAL"
-  #   lc_ldap_ssl_enabled: false
-  #   lc_ldap_ssl_secret_name: ""
-  #   lc_ldap_user_name_attribute: "*:cn"
-  #   lc_ldap_user_display_name_attr: "cn"
-  #   lc_ldap_group_base_dn: "O=LOCAL"
-  #   lc_ldap_group_name_attribute: "*:cn"
-  #   lc_ldap_group_display_name_attr: "cn"
-  #   lc_ldap_group_membership_search_filter: "(|(&(objectclass=groupofnames)(member={0}))(&(objectclass=groupofuniquenames)(uniquemember={0})))"
-  #   lc_ldap_group_member_id_map: "groupofnames:member"
-  #   ad:
-  #     lc_ad_gc_host: ""
-  #     lc_ad_gc_port: ""
-  #     lc_user_filter: "(&(cn=%v)(objectclass=person))"
-  #     lc_group_filter: "(&(cn=%v)(|(objectclass=groupofnames)(objectclass=groupofuniquenames)(objectclass=groupofurls)))"
-  #   tds:
-  #     lc_user_filter: "(&(cn=%v)(objectclass=person))"
-  #     lc_group_filter: "(&(cn=%v)(|(objectclass=groupofnames)(objectclass=groupofuniquenames)(objectclass=groupofurls)))"
+    lc_selected_ldap_type: "IBM Security Directory Server"
+    lc_ldap_server: "<LDAP-SERVER>"
+    lc_ldap_port: "390"
+    lc_bind_secret: ext-ldap-bind-secret # secret is expected to have ldapUsername and ldapPassword keys
+    lc_ldap_base_dn: O=EXTERNAL,C=US
+    lc_ldap_ssl_enabled: false
+    lc_ldap_ssl_secret_name: ""
+    lc_ldap_user_name_attribute: "*:cn"
+    lc_ldap_user_display_name_attr: "cn"
+    lc_ldap_group_base_dn: "O=EXTERNAL,C=US"
+    lc_ldap_group_name_attribute: "*:cn"
+    lc_ldap_group_display_name_attr: "cn"
+    lc_ldap_group_membership_search_filter: "(|(&(objectclass=groupofnames)(member={0}))(&(objectclass=groupofuniquenames)(uniquemember={0})))"
+    lc_ldap_group_member_id_map: "groupofnames:member"
+    tds:
+      lc_user_filter: "(&(cn=%v)(objectclass=person))"
+      lc_group_filter: "(&(cn=%v)(|(objectclass=groupofnames)(objectclass=groupofuniquenames)(objectclass=groupofurls)))"
   datasource_configuration:
     # the candidate value is "db2" or "db2HADR" or "oracle" or "sqlserver"
     dc_gcd_datasource:
       dc_database_type: "db2"
       dc_common_gcd_datasource_name: "FNGCDDS"
       dc_common_gcd_xa_datasource_name: "FNGCDDSXA"
-      database_servername: "150.238.37.50"
+      database_servername: "<DB2-SERVER>"
       database_name: "GCDDB"
       database_port: "50000"
     dc_os_datasources:
     - dc_database_type: "db2"
       dc_common_os_datasource_name: "FNOS1DS"
       dc_common_os_xa_datasource_name: "FNOS1DSXA"
-      database_servername: "150.238.37.50"
+      database_servername: "<DB2-SERVER>"
       database_name: "OS1DB"
       database_port: "50000"
     dc_icn_datasource:
       dc_database_type: "db2"
     #  dc_oracle_icn_jdbc_url: "jdbc:oracle:thin:@//<hostname>:1521/orcl"
       dc_common_icn_datasource_name: "ECMClientDS"
-      database_servername: "150.238.37.50"
+      database_servername: "<DB2-SERVER>"
       database_port: "50000"
       database_name: "ICNDB"
     #   dc_hadr_standby_servername: "<hostname>"
@@ -152,7 +120,7 @@ spec:
     dc_ums_datasource: # credentials are read from ums_configuration.db_secret_name
     #  # oauth database config
       dc_ums_oauth_type: db2 # derby (for test), db2, oracle
-      dc_ums_oauth_host: 150.238.37.50
+      dc_ums_oauth_host: <DB2-SERVER>
       dc_ums_oauth_port: 50000
       dc_ums_oauth_name: UMSDB
       dc_ums_oauth_schema:
@@ -163,7 +131,7 @@ spec:
       dc_ums_oauth_alternate_ports:
     # teamserver database config
       dc_ums_teamserver_type: db2 # derby (for test), db2
-      dc_ums_teamserver_host: 150.238.37.50
+      dc_ums_teamserver_host: <DB2-SERVER>
       dc_ums_teamserver_port: 50000
       dc_ums_teamserver_name: UMSDB
       dc_ums_teamserver_ssl: false
@@ -173,7 +141,7 @@ spec:
       dc_ums_teamserver_alternate_ports:
     dc_ca_datasource:
       dc_database_type: "db2" # This value can be db2 or db2HADR
-      database_servername: "150.238.37.50"
+      database_servername: "<DB2-SERVER>"
       database_name: "BASECA"
       tenant_databases:
       - CATENANT
@@ -210,7 +178,7 @@ spec:
       service_type: "Route" # required, supported service type for application engine is: Route or NodePort.
       frontend_external_hostname: "aca.front.169.48.134.155.nip.io" # required, if service_type is Route. Otherwise leave blank
       backend_external_hostname: "aca.backend.169.48.134.155.nip.io" # required, if service_type is Route. Otherwise leave blank
-      ldap_secret: aca-ldap
+      ldap_secret: 
       db_secret: aca-basedb
       image:
         repository: "cp.icr.io/cp/cp4a/baca"
@@ -369,7 +337,7 @@ spec:
         max_replicas: 3
         min_replicas: 1
         target_cpu_utilization_percentage: 80
-      hostname: "cpe-aca.169.48.134.155.nip.io"
+      hostname: "cpe-{{ meta.namespace }}.<HOSTNAME_SUFFIX>"
       cpe_production_setting:
         time_zone: Etc/UTC
         jvm_initial_heap_percentage: 18
@@ -435,7 +403,7 @@ spec:
         max_replicas: 3
         min_replicas: 1
         target_cpu_utilization_percentage: 80
-      hostname: "cmis-{{ meta.namespace }}.169.48.134.155.nip.io"
+      hostname: "cmis-{{ meta.namespace }}.<HOSTNAME_SUFFIX>"
       cmis_production_setting:
         cmis_version: 1.1
         cpe_url: 
@@ -502,7 +470,7 @@ spec:
         max_replicas: 1
         min_replicas: 1
         target_cpu_utilization_percentage: 80     
-      hostname: "graphql-{{ meta.namespace }}.169.48.134.155.nip.io"
+      hostname: "graphql-{{ meta.namespace }}.<HOSTNAME_SUFFIX>"
       ## GraphQL Production setting
       graphql_production_setting:
         time_zone: Etc/UTC
@@ -512,7 +480,7 @@ spec:
         license_model: FNCM.PVUNonProd
         license: accept
         enable_graph_iql: true
-        cpe_uri: https://cpe-aca.169.48.134.155.nip.io/wsi/FNCEWS40MTOM
+        cpe_uri: https://cpe-{{ meta.namespace }}.<HOSTNAME_SUFFIX>/wsi/FNCEWS40MTOM
       ## Monitor setting and Logiing setting
       monitor_enabled: false
       logging_enabled: false
@@ -541,9 +509,9 @@ spec:
       encryption_key: "128"
     ic_ldap_creation:
       ic_ldap_admin_user_name:
-      - "p8admin"
+      - "ceadmin"
       ic_ldap_admins_groups_name:
-      - "p8admins"
+      - "P8Admins"
       ic_ldap_name: "ldap_name"
     ic_obj_store_creation:
       object_stores:
@@ -555,9 +523,9 @@ spec:
           dc_os_datasource_name: "FNOS1DS"
           dc_os_xa_datasource_name: "FNOS1DSXA"
         oc_cpe_obj_store_admin_user_groups:
-        - "p8osadmins"
+        - "P8Admins"
         # Array of users
-        oc_cpe_obj_store_basic_user_groups: "p8osusers"
+        oc_cpe_obj_store_basic_user_groups: "P8Users"
         oc_cpe_obj_store_addons: true
         oc_cpe_obj_store_addons_list:
         - "{CE460ADD-0000-0000-0000-000000000004}"
@@ -581,8 +549,8 @@ spec:
         oc_cpe_obj_store_workflow_data_tbl_space: "VWDATA_TS"
         oc_cpe_obj_store_workflow_index_tbl_space: ""
         oc_cpe_obj_store_workflow_blob_tbl_space: ""
-        oc_cpe_obj_store_workflow_admin_group: "p8admins"
-        oc_cpe_obj_store_workflow_config_group: "p8admins"
+        oc_cpe_obj_store_workflow_admin_group: "P8Admins"
+        oc_cpe_obj_store_workflow_config_group: "P8Admins"
         oc_cpe_obj_store_workflow_date_time_mask: "mm/dd/yy hh:tt am"
         oc_cpe_obj_store_workflow_locale: "en"
         oc_cpe_obj_store_workflow_pe_conn_point_name: "pe_conn_os1"
@@ -1042,7 +1010,7 @@ spec:
       min_replicas: 1
       target_cpu_utilization_percentage: 80
     ## Route public hostname
-    hostname: "navigator.169.48.134.155.nip.io"
+    hostname: "navigator.<HOSTNAME_SUFFIX>"
     ## ICN Production setting
     icn_production_setting:
       timezone: Etc/UTC
@@ -1055,9 +1023,9 @@ spec:
     #     jvm_customize_options: "-DFileNet.WSI.AutoDetectLTPAToken=true"
       icn_db_type: db2
       icn_jndids_name: ECMClientDS
-      icn_schema: DB2INST1
-      icn_table_space: TS1
-      icn_admin: icnadmin
+      icn_schema: ICNDB
+      icn_table_space: ICNDB
+      icn_admin: ceadmin
       license: accept
       enable_appcues: false
       allow_remote_plugins_via_http: false
@@ -1559,14 +1527,13 @@ spec:
     existing_claim_name:
     replica_count: 1
     service_type: Route
-    hostname:  ums.cp4autocluster-be5b1ee812fa4041cc73b6bbf969fc88-0001.us-south.containers.appdomain.cloud
+    hostname:  ums.<HOSTNAME-SUFFIX>
     port: 443
     images:
       ums:
         repository: cp.icr.io/cp/cp4a/ums/ums
         tag: 20.0.1
     admin_secret_name: ibm-dba-ums-secret
-    db_secret_name:   
     # # optional for secure communication with UMS
     # external_tls_secret_name: ibm-dba-ums-external-tls-secret
     # # optional for secure communication with UMS
@@ -1725,7 +1692,7 @@ spec:
 
   resource_registry_configuration:
     admin_secret_name: resource-registry-admin-secret
-    hostname: rr-cp4auto.169.48.134.155.nip.io
+    hostname: rr.<HOSTNAME_SUFFIX>
     port: 443
     replica_size: 1
     images:
@@ -1784,10 +1751,10 @@ spec:
       bastudio:
         repository: cp.icr.io/cp/cp4a/bas/bastudio
         tag: 20.0.1
-    hostname: bastudio-cp4auto.169.48.134.155.nip.io
+    hostname: bastudio.<HOSTNAME_SUFFIX>
     port: 443
     database:
-      host: 150.238.37.50
+      host: <DB2-SERVER>
       name: BASTUDIO
       port: 50000
       # If you want to enable database automatic client reroute (ACR) for HADR, you must configure alternative_host and alternative_port. Otherwise, leave them blank.
@@ -1811,10 +1778,10 @@ spec:
         solution_server:
           repository: cp.icr.io/cp/cp4a/bas/solution-server
           tag: 20.0.1
-      hostname: playback-cp4auto.169.48.134.155.nip.io
+      hostname: playback.<HOSTNAME_SUFFIX>
       port: 443
       database:
-        host: 150.238.37.50
+        host: <DB2-SERVER>
         name: AESTUDIO
         port: 50000
         # If you want to enable database ACR for HADR, configure alternative_host and alternative_port. Otherwise, leave them blank.
@@ -1824,7 +1791,32 @@ spec:
 
   
 
-
+ ########################################################################
+  ########      App Engine Configuration    ########
+  ########################################################################
+ 
+  ## App Engine configuration 
+  application_engine_configuration:
+  ## The application_engine_configuration is a list. You can deploy multiple instances of App Engine and assign different configurations for each instance.
+  ## For each instance, application_engine_configuration.name and application_engine_configuration.name.hostname must have different values.
+  - name: ae_instance1
+    hostname: appeng.<HOSTNAME_SUFFIX>
+    admin_secret_name: ae-secret-credential
+    admin_user: ceadmin
+    database:
+      host: <db2 server IP>
+      name: APPENGDB
+      port: 50000
+      ## If you set up DB2 HADR and want to use it, you must configure alternative_host and alternative_port. Otherwise, leave them blank.
+      alternative_host: 
+      alternative_port: 
+    images:
+      db_job:
+        repository: cp.icr.io/cp/cp4a/aae/solution-server-helmjob-db
+        tag: 20.0.1
+      solution_server:
+        repository: cp.icr.io/cp/cp4a/aae/solution-server
+        tag: 20.0.1
 
   #bastudio_configuration:
     # admin_secret_name: bastudio-admin-secret
@@ -2379,9 +2371,9 @@ spec:
       storageClassName: ibmc-file-retain-bronze
 
     kafka:
-      bootstrapServers: "my-cluster-kafka-bootstrap-kafka.cp4autocluster-be5b1ee812fa4041cc73b6bbf969fc88-0001.us-south.containers.appdomain.cloud:443"
-      securityProtocol: SSL
-      serverCertificate: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lKQU1QWXF5QUlWTlhnTUEwR0NTcUdTSWIzRFFFQkN3VUFNQ294RXpBUkJnTlYKQkFvTUNtbHZMbk4wY21sdGVta3hFekFSQmdOVkJBTU1DbU5zZFhOMFpYSXRZMkV3SGhjTk1qQXdNekV6TURreApNalE1V2hjTk1qRXdNekV6TURreE1qUTVXakFxTVJNd0VRWURWUVFLREFwcGJ5NXpkSEpwYlhwcE1STXdFUVlEClZRUUREQXBqYkhWemRHVnlMV05oTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUEKNm13TW9aUnZBVG1ORThISE1oTWRnejBTTCtXbXZpTjIrOXJHWlJFUmViK3B0LzMvL3gydDFtdjVLYVZkZGM1OAoyQks5S3Axc0RLYlRTRXk0bGUwMkZoaHdJVUNHWCtGOEY2VktPaThwV2EwZ0xPdUdVQ1daeDZvQUhpTi9zMEpNCjRodFVZbFllTjhzdzZmNUNodVZXNVJLZm9QY1E2VFBSdHUzWElDaFlmc2JNazNhZ0JzU0ZoVjRZN0lvd29LSGgKaXZ5a2tCRmdWSDg1c1krQzh4SWtkQTBMMnJDUndkUE84YVNIVVlaZUZVamJMV0Exd2txUlhJZCtTT0cxYlpFQQpEOXF6UXR6cGg5N2FVZEkyOUhraEZ0dkg0ekxWTk5iaG91WHgrNE0zUUwxYUNLRmJkTm5HeTVUeVZKK2dDU25lClZEMEMwYm5yWUd3ZWQwUXV2dFhEc1FJREFRQUJvMUF3VGpBZEJnTlZIUTRFRmdRVTFxYmN3OXhUK0xsV3NGa0YKVDJhNjZCY0xuekV3SHdZRFZSMGpCQmd3Rm9BVTFxYmN3OXhUK0xsV3NGa0ZUMmE2NkJjTG56RXdEQVlEVlIwVApCQVV3QXdFQi96QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFzRUFieGRseWJiWVNBU2pBSldCbFBWOFJPcy8rCmR1L1JvMUhpRUR0MXJaNi94OW5tRTRheE9lOTVrK3gzTjZvM1QyUHU4dWk1a2pkZUpWZU4zdStzYVlVb0VMZFUKUldoWWlkWllSNEIxaGJhQXQ1dFlzazNtUFlCdmxwemhoYUl6R1lLOTV1OE5uQ1pydU56cDZkY29OVy9kZGdrRwpDa1lpaGdGblBBdk1CUmRBNE5aK3RQVWwyRW9Yc3dxYjVmRXNnYlI0RzljcHd6bnk1Qmt4OXNrVmhudkZ5b00xCk1UZmN3ZitERHBsN1AzdFZIcDJrU1FmYlhvUyt3Z1E2eTErYkVFWEJYZkl2Z3ZVQ0NEUHBSVUdGSGVQZGsyQ2MKZFhOangwTEYwc0ZuMm8rcHdXSTRHcU03YnljT3ZnZkZFZk1RYWxjbHlwNFlpNFQ0WFpqTS9CS2dZZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+      bootstrapServers: "my-kafka-headless.kafka.svc.cluster.local:9092"
+      securityProtocol: PLAINTEXT
+      serverCertificate: 
     
     settings:
       egress: true
@@ -2618,7 +2610,7 @@ spec:
       enabled: true
 
     registry:
-      endpoint: "https://rr-cp4auto.169.48.134.155.nip.io/v3beta"
+      endpoint: "https://<RESOURCE_REGISTRY_HOSTNAME_PREFIX>.<HOSTNAME_SUFFIX>/v3beta"
 
     npmRegistry:
       persistence:
@@ -2638,7 +2630,7 @@ spec:
       image:
         repository: "cp.icr.io/cp/cp4a/adw/adw-designer"
         pullPolicy: "IfNotPresent"
-      externalUrl: "https://adw-designer.169.48.134.155.nip.io"
+      externalUrl: "https://adw-designer.<HOSTNAME_SUFFIX>"
       service:
         type: "Route"
 
@@ -2652,7 +2644,7 @@ spec:
       service:
         type: "Route"
       runLogLevel: "warn"
-      externalUrl: "https://adw-runtime.169.48.134.155.nip.io"
+      externalUrl: "https://adw-runtime.<HOSTNAME_SUFFIX>"
 
 
     management:
@@ -2664,7 +2656,7 @@ spec:
         storageClassName: "ibmc-file-retain-bronze"
       service:
         type: "Route"
-      externalUrl: "https://adw-management.169.48.134.155.nip.io"
+      externalUrl: "https://adw-management.<HOSTNAME_SUFFIX>"
 
     setup:
       image:
@@ -2678,13 +2670,241 @@ spec:
 
     baiKafka:
       topic: "bai-ingress"
-      bootstrapServers: "my-cluster-kafka-bootstrap-kafka.cp4autocluster-be5b1ee812fa4041cc73b6bbf969fc88-0001.us-south.containers.appdomain.cloud:443"
-      securityProtocol: "SSL"
+      bootstrapServers: "my-kafka-headless.kafka.svc.cluster.local:9092"
+      securityProtocol: "PLAINTEXT"
 
     baiElasticsearch:
       url: "https://demo-template-ibm-dba-ek-client:9200"
-      kibanaUrl: "https://kibana-route-aca.cp4autocluster-be5b1ee812fa4041cc73b6bbf969fc88-0001.us-south.containers.appdomain.cloud/app/kibana"
+      kibanaUrl: "https://kibana-route-automation.<HOSTNAME_SUFFIX>/app/kibana"
 
     oidc:
-      endpoint: "https://ums.cp4autocluster-be5b1ee812fa4041cc73b6bbf969fc88-0001.us-south.containers.appdomain.cloud/oidc/endpoint/ums"
+      endpoint: "https://ums.<HOSTNAME_SUFFIX>/oidc/endpoint/ums"
 
+########################################################################
+########  IBM  Automation Workstream Services  ########
+########################################################################
+
+
+  iaws_configuration:
+    - name: instance1
+      iaws_server:
+        service_type: "Route"
+        workstream_server_secret: ibm-iaws-server-secret
+        hostname: workstream.<HOSTNAME_SUFFIX>
+        port: 443
+        replicas: 1
+        admin_user: umsadmin
+        image:
+          repository: cp.icr.io/cp/cp4a/iaws/iaws-server
+          tag: 20.0.1
+          pullPolicy: IfNotPresent
+        pfs_bpd_database_init_job:
+          repository: cp.icr.io/cp/cp4a/iaws/pfs-bpd-database-init-prod
+          tag: 20.0.1
+          pullPolicy: IfNotPresent
+        upgrade_job:
+          repository: cp.icr.io/cp/cp4a/iaws/iaws-server-dbhandling
+          tag: 20.0.1
+          pullPolicy: IfNotPresent
+        ibm_workplace_job:
+          repository:  cp.icr.io/cp/cp4a/iaws/iaws-ibm-workplace
+          tag: 20.0.1
+          pull_policy: IfNotPresent
+        database:
+          ssl: false
+          sslsecretname: ibm-dba-baw-db2-cacert
+          type: "DB2"
+          server_name: <DB2_SERVER_IP>
+          database_name: "IAWSDB"
+          port: "50000"
+          secret_name: ibm-baw-wfs-server-db-secret
+          dbcheck:
+            wait_time: 900
+            interval_time: 15
+          hadr:
+            standbydb_host:
+            standbydb_port:
+            retryinterval:
+            maxretries:
+        content_integration:
+          init_job_image:
+            repository: cp.icr.io/cp/cp4a/iaws/iaws-ps-content-integration
+            tag: 20.0.1
+            pull_policy: IfNotPresent
+        appengine:
+          hostname: appeng.<HOSTNAME_SUFFIX>
+          admin_secret_name: ae-secret-credential
+        resource_registry:
+          hostname: rr.<HOSTNAME_SUFFIX>
+          port: 443
+          admin_secret_name: resource-registry-admin-secret
+        jms:
+          image:
+            repository: cp.icr.io/cp/cp4a/iaws/jms
+            tag: 20.0.1
+            pull_policy: IfNotPresent
+          tls:
+            tls_secret_name: dummy-jms-tls-secret
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+            requests:
+              memory: "512Mi"
+              cpu: "200m"
+          storage:
+            persistent: true
+            size: "2Gi"
+            use_dynamic_provisioning: true
+            access_modes:
+            - ReadWriteOnce
+            storage_class: "ibmc-block-bronze"
+        resources:
+          limits:
+            cpu: 3
+            memory: 2096Mi
+          requests:
+            cpu: 2
+            memory: 1048Mi
+        probe:
+          ws:
+            liveness_probe:
+              initial_delay_seconds: 240
+            readinessProbe:
+              initial_delay_seconds: 180
+        logs:
+          console_format: "json"
+          console_log_level: "INFO"
+          console_source: "message,trace,accessLog,ffdc,audit"
+          message_format: "basic"
+          trace_format: "ENHANCED"
+          trace_specification: "*=info"
+        custom_xml_secret_name:
+        lombardi_custom_xml_secret_name: wfs-lombardi-custom-xml-secret
+
+  pfs_configuration:
+    pfs:
+      hostname: pfs.<HOSTNAME_SUFFIX>
+      port: 443
+      service_type: Route
+      image:
+        repository: cp.icr.io/cp/cp4a/iaws/pfs-prod
+        tag: 20.0.1
+        pull_policy: IfNotPresent
+      liveness_probe:
+        initial_delay_seconds: 60
+      readiness_probe:
+        initial_delay_seconds: 60
+      replicas: 1
+      service_account:
+      anti_affinity: hard
+      admin_secret_name: ibm-pfs-admin-secret
+      config_dropins_overrides_secret: ibm-pfs-config
+      resources_security_secret: ""
+      external_tls_secret:
+      external_tls_ca_secret:
+      tls:
+        tls_secret_name:
+        tls_trust_list:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 512Mi
+        limits:
+          cpu: 2
+          memory: 4Gi
+      saved_searches:
+        index_name: ibmpfssavedsearches
+        index_number_of_shards: 3
+        index_number_of_replicas: 1
+        index_batch_size: 100
+        update_lock_expiration: 5m
+        unique_constraint_expiration: 5m
+      security:
+        sso:
+          domain_name:
+          cookie_name: "ltpatoken2"
+          ltpa:
+            filename: "ltpa.keys"
+            expiration: "120m"
+            monitor_interval: "60s"
+        ssl_protocol: SSL
+      executor:
+        max_threads: "80"
+        core_threads: "40"
+      rest:
+        user_group_check_interval: "300s"
+        system_status_check_interval: "60s"
+        bd_fields_check_interval: "300s"
+      custom_env_variables:
+        names:
+        secret:
+      output:
+        storage:
+          use_dynamic_provisioning: false
+          size: 5Gi
+          storage_class: "pfs-output"
+      logs:
+        storage:
+          use_dynamic_provisioning: true
+          size: 5Gi
+          storage_class: "ibmc-block-bronze"
+      dba_resource_registry:
+        image:
+          repository: cp.icr.io/cp/cp4a/aae/dba-etcd
+          tag: 20.0.1
+          pull_policy: IfNotPresent
+        lease_ttl: 120
+        pfs_check_interval: 10
+        pfs_connect_timeout: 10
+        pfs_response_timeout: 30
+        pfs_registration_key: /dba/appresources/IBM_PFS/PFS_SYSTEM
+        tls_secret: rr-tls-client-secret
+        resources:
+          limits:
+            memory: ‘512Mi’
+            cpu: ‘500m’
+          requests:
+            memory: ‘512Mi’
+            cpu: ‘200m’
+    elasticsearch:
+      es_image:
+        repository: cp.icr.io/cp/cp4a/iaws/pfs-elasticsearch-prod
+        tag: 20.0.1
+        pull_policy: IfNotPresent
+      pfs_init_image:
+        repository: cp.icr.io/cp/cp4a/iaws/pfs-init-prod
+        tag: 20.0.1
+        pull_policy: IfNotPresent
+      nginx_image:
+        repository: cp.icr.io/cp/cp4a/iaws/pfs-nginx-prod
+        tag: 20.0.1
+        pull_policy: IfNotPresent
+      replicas: 1
+      service_type: NodePort
+      external_port:
+      anti_affinity: hard
+      service_account: ibm-pfs-es-service-account
+      privileged: true
+      probe_initial_delay: 90
+      heap_size: "1024m"
+      resources:
+        limits:
+          memory: "2Gi"
+          cpu: "1000m"
+        requests:
+          memory: "1Gi"
+          cpu: "100m"
+      storage:
+        persistent: true
+        use_dynamic_provisioning: true
+        size: 10Gi
+        storage_class: "ibmc-block-bronze"
+      snapshot_storage:
+        enabled: false
+        use_dynamic_provisioning: false
+        size: 30Gi
+        storage_class_name: ""
+        existing_claim_name: ""
+      security:
+        users_secret: ""
