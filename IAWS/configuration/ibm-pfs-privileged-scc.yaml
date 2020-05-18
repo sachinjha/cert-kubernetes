@@ -1,0 +1,34 @@
+apiVersion: security.openshift.io/v1
+kind: SecurityContextConstraints
+metadata:
+  name: ibm-pfs-privileged-scc
+allowHostDirVolumePlugin: true
+allowHostIPC: true
+allowHostNetwork: true
+allowHostPID: true
+allowHostPorts: true
+allowPrivilegedContainer: true
+allowPrivilegeEscalation: true
+allowedCapabilities:
+- '*'
+allowedFlexVolumes: []
+allowedUnsafeSysctls:
+- '*'
+defaultAddCapabilities: []
+defaultAllowPrivilegeEscalation: true
+forbiddenSysctls: []
+fsGroup:
+  type: RunAsAny
+readOnlyRootFilesystem: false
+requiredDropCapabilities: []
+runAsUser:
+  type: RunAsAny
+seccompProfiles:
+- '*'
+seLinuxContext:
+  type: RunAsAny
+supplementalGroups:
+  type: RunAsAny
+volumes:
+- '*'
+priority: 2
