@@ -1,0 +1,89 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfs-es-0
+spec:
+  storageClassName: "pfs-es"
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  nfs:
+    path: /opt/nfs2/iaws/pfs-es-0
+    server: <NFS_SERVER_IP>
+  persistentVolumeReclaimPolicy: Recycle
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfs-es-1
+spec:
+  storageClassName: "pfs-es"
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  nfs:
+    path: /opt/nfs2/iaws/pfs-es-1
+    server: <NFS_SERVER_IP>
+  persistentVolumeReclaimPolicy: Recycle
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfs-logs-0
+spec:
+  storageClassName: "pfs-logs"
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  nfs:
+    path: /opt/nfs2/iaws/pfs-logs-0
+    server: <NFS_SERVER_IP>
+  persistentVolumeReclaimPolicy: Recycle
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfs-logs-1
+spec:
+  storageClassName: "pfs-logs"
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  nfs:
+    path: /opt/nfs2/iaws/pfs-logs-1
+    server: <NFS_SERVER_IP>
+  persistentVolumeReclaimPolicy: Recycle
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfs-output-0
+spec:
+  storageClassName: "pfs-output"
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  nfs:
+    path: /opt/nfs2/iaws/pfs-output-0
+    server: <NFS_SERVER_IP>
+  persistentVolumeReclaimPolicy: Recycle
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pfs-output-1
+spec:
+  storageClassName: "pfs-output"
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  nfs:
+    path: /opt/nfs2/iaws/pfs-output-1
+    server: <NFS_SERVER_IP>
+  persistentVolumeReclaimPolicy: Recycle
