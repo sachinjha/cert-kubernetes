@@ -42,7 +42,7 @@ spec:
     sc_deployment_platform: OCP
     sc_deployment_hostname_suffix: "<LOADBALANCER-PUBLICIP>.nip.io"
     trusted_certificate_list: []
-    encryption_key_secret: icp4a-shared-encryption-key
+    encryption_key_secret: icp4a-shared-key-secret
   ldap_configuration:
     lc_selected_ldap_type: "IBM Security Directory Server"  
     lc_ldap_server: "<LDAP-SERVER>"
@@ -2846,9 +2846,9 @@ spec:
           storage_class: "pfs-output"
       logs:
         storage:
-          use_dynamic_provisioning: true
+          use_dynamic_provisioning: false
           size: 5Gi
-          storage_class: "ibmc-block-bronze"
+          storage_class: "pfs-logs"
       dba_resource_registry:
         image:
           repository: cp.icr.io/cp/cp4a/aae/dba-etcd
@@ -2897,9 +2897,9 @@ spec:
           cpu: "100m"
       storage:
         persistent: true
-        use_dynamic_provisioning: true
+        use_dynamic_provisioning: false
         size: 10Gi
-        storage_class: "ibmc-block-bronze"
+        storage_class: "pfs-es"
       snapshot_storage:
         enabled: false
         use_dynamic_provisioning: false
