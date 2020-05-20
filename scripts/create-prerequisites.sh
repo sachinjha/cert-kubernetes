@@ -85,3 +85,7 @@ oc adm policy add-scc-to-user ibm-pfs-privileged-scc -z ibm-pfs-es-service-accou
 oc apply -f ../IAWS/configuration/secrets.yaml
 kubectl create secret generic wfs-lombardi-custom-xml-secret --from-file=sensitiveCustomConfig=../IAWS/configuration/100Custom.xml
 
+######################## ODM ###########################
+
+# this is using basic UserRegistry. For advance options see instructions here: https://www.ibm.com/support/knowledgecenter/SSYHZ8_20.0.x/com.ibm.dba.offerings/topics/tsk_config_secret.html
+kubectl create secret generic odm-user-registry-secret --from-file=webSecurity.xml=../ODM/configuration/security/sample-webSecurity-basic-registry.xml

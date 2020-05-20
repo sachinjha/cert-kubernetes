@@ -1285,7 +1285,7 @@ spec:
     customization:
       securitySecretRef:
       baiEmitterSecretRef:
-      authSecretRef:
+      authSecretRef: odm-user-registry-secret
       dedicatedNodeLabel:
 
       productName: IBM Cloud Pak for Automation
