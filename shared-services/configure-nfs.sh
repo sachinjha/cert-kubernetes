@@ -25,9 +25,13 @@ mkdir -p /opt/nfs2/graphql1/logs
 
 
 # permissions
-chown -Rf 50001:0 /opt/nfs2/graphql1/
-chmod -Rf g=u /opt/nfs2/graphql1/
-
+#
+#chown -Rf 50001:0 /opt/nfs2/graphql1/
+#chmod -Rf g=u /opt/nfs2/graphql1/
+# above is the official recommendation but pod doesn't start with this 
+chgrp -R 65534 /opt/nfs2/graphql1
+chmod -Rf g=u /opt/nfs2/graphql1
+#chown -R nfsnobody:nfsnobody /opt/nfs2/graphql1/
 
 #CMIS
 mkdir -p /opt/nfs2/cmis/configDropin/overrides
@@ -67,6 +71,18 @@ chgrp -R 65534 /opt/nfs2/icn
 chmod -Rf g=u /opt/nfs2/icn
 
 
+############ for IAWS ####################
+
+
+mkdir -p /opt/nfs2/iaws/pfs-es-0
+mkdir -p /opt/nfs2/iaws//pfs-es-1
+mkdir -p /opt/nfs2/iaws/pfs-logs-0
+mkdir -p /opt/nfs2/iaws/pfs-logs-1
+mkdir -p /opt/nfs2/iaws/pfs-output-0
+mkdir -p /opt/nfs2/iaws/pfs-output-1
+
+chown -R :65534 /opt/nfs2/iaws/pfs-*
+chmod g+rw /opt/nfs2/iaws/pfs-*
 
 ##############  Update /etc/exports ###########
 
