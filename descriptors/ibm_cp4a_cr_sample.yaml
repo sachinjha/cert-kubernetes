@@ -546,7 +546,7 @@ spec:
         oc_cpe_obj_store_enable_workflow: true
         oc_cpe_obj_store_workflow_region_name: "design_region_name"
         oc_cpe_obj_store_workflow_region_number: 1
-        oc_cpe_obj_store_workflow_data_tbl_space: "VWDATA_TS"
+        oc_cpe_obj_store_workflow_data_tbl_space: "DATA_TS"
         oc_cpe_obj_store_workflow_index_tbl_space: ""
         oc_cpe_obj_store_workflow_blob_tbl_space: ""
         oc_cpe_obj_store_workflow_admin_group: "P8Admins"
