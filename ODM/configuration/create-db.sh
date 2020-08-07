@@ -1,0 +1,1 @@
+db2 create database ODMDB automatic storage yes using codeset UTF-8 territory US pagesize 32768;
