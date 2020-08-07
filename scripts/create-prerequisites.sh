@@ -1,9 +1,22 @@
 #!/bin/sh
 
 
-#### root ca secret when using signed root CA for secure routes #####
+#### root ca secret when using signed root CA for secure routes . If using self-signed cert, the below line can be commented #####
+oc create secret generic cp4a-root-ca --from-file=tls.key=tls/automation-root-ca.key --from-file=tls.crt=tls/automation-root-ca_intermediate.pem
 
-oc create secret cp4a-root-ca tls --cert=tls/automation-root-ca_intermediate.pem --key=tls/automation-root-ca.key
+## ums external tls certs ###
+oc create secret tls ibm-dba-ums-external-tls-secret --cert tls/automation-root-ca.pem --key tls/automation-root-ca.key
+oc create secret tls ibm-dba-ums-external-tls-teams-secret --cert tls/automation-root-ca.pem --key tls/automation-root-ca.key
+oc create secret tls ibm-dba-ums-external-tls-scim-secret --cert tls/automation-root-ca.pem --key tls/automation-root-ca.key
+oc create secret tls ibm-dba-ums-external-tls-sso-secret --cert tls/automation-root-ca.pem --key tls/automation-root-ca.key
+
+oc create secret generic ibm-dba-ums-external-tls-ca-secret --from-file=tls.key=tls/automation-root-ca.key --from-file=tls.crt=tls/automation-root-ca_intermediate.pem
+
+
+## copy jdbc files to operator 
+podname=$(oc get pod | grep ibm-cp4a-operator | awk '{print $1}')
+kubectl cp jdbc $podname:/opt/ansible/share -c ansible
+
 
 
 ############### UMS ####################
@@ -39,3 +52,17 @@ oc apply -f ../BAS/configuration/secret.yaml
 
 
 
+######################## BAN  ########################
+
+../BAN/configuration/ban-secret.sh
+
+######################## FNCM  ########################
+
+../FNCM/configuration/ibm-fncm-secret.sh
+
+
+############# BAW ##########
+
+oc apply -f 
+oc create serviceaccount ibm-pfs-es-service-account
+oc adm policy add-scc-to-user privileged -z ibm-pfs-es-service-account
