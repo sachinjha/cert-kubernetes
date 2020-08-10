@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+  name: graphql-cfgstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /opt/nfs2/graphql1/configDropin/overrides
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: graphql-cfgstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: graphql-cfgstore
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: graphql-cfgstore-pv
+  volumeName: graphql-cfgstore-pv
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+  name: graphql-logstore-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 20Gi
+  nfs:
+    path: /opt/nfs2/graphql1/logs
+    server: <NFS SERVER>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: graphql-logstore-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: graphql-logstore
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  volumeName: graphql-logstore-pv
+  storageClassName: graphql-logstore-pv
