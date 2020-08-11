@@ -58,11 +58,30 @@ oc apply -f ../BAS/configuration/secret.yaml
 
 ######################## FNCM  ########################
 
+# not relying on dynamically provisioed pvc as the size is too small - 1 gb and can't be extended.
 ../FNCM/configuration/ibm-fncm-secret.sh
+oc apply -f ../FNCM/configuration/volumes_cmis.yaml
+oc apply -f ../FNCM/configuration/volumes_cpe.yaml
+oc apply -f ../FNCM/configuration/graphql_volume.yaml
 
+
+######################## ODM  ########################
+
+../ODM/configuration/db-secret.sh
+../ODM/configuration/ums-oidc-secrets.sh
+#make sure you have updated the common admin user (ltiadmin in this case) for the org and also added it in LDAP.
+# Otherwise use umsadmin as the user with all roles and update that in the sample-webSecurity-OIDC-ums
+# the group P8Admins is part of default LDAP.ldif file 
+kubectl create secret generic mywebsecuritysecret --from-file=webSecurity.xml=../ODM/configuration/security/sample-webSecurity-OIDC-ums.xml
 
 ############# BAW ##########
+
+echo "changing directory to $pwd "
+cd $pwd
 
 oc apply -f 
 oc create serviceaccount ibm-pfs-es-service-account
 oc adm policy add-scc-to-user privileged -z ibm-pfs-es-service-account
+oc apply -f ../BAW/configuration/encryption-key-secret.yaml
+
+
