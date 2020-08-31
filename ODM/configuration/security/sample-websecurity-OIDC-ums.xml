@@ -1,17 +1,17 @@
 <server>
-      <variable name="odm.rtsAdministrators.user1" value="user:o=defaultWIMFileBasedRealm/ltiadmin"/>
-      <variable name="odm.rtsInstallers.user1" value="user:o=defaultWIMFileBasedRealm/ltiadmin"/>
-      <variable name="odm.rtsConfigManagers.user1" value="user:o=defaultWIMFileBasedRealm/ltiadmin"/>
-      <variable name="odm.resAdministrators.user1" value="user:o=defaultWIMFileBasedRealm/ltiadmin"/>
-      <variable name="odm.resDeployers.user1" value="user:o=defaultWIMFileBasedRealm/ltiadmin"/>
-      <variable name="odm.resMonitors.user1" value="user:o=defaultWIMFileBasedRealm/ltiadmin"/>
-      <variable name="odm.resExecutors.user1" value="user:o=defaultWIMFileBasedRealm/ltiadmin"/>
+      <variable name="odm.rtsAdministrators.user1" value="user:o=defaultWIMFileBasedRealm/orgadmin"/>
+      <variable name="odm.rtsInstallers.user1" value="user:o=defaultWIMFileBasedRealm/orgadmin"/>
+      <variable name="odm.rtsConfigManagers.user1" value="user:o=defaultWIMFileBasedRealm/orgadmin"/>
+      <variable name="odm.resAdministrators.user1" value="user:o=defaultWIMFileBasedRealm/orgadmin"/>
+      <variable name="odm.resDeployers.user1" value="user:o=defaultWIMFileBasedRealm/orgadmin"/>
+      <variable name="odm.resMonitors.user1" value="user:o=defaultWIMFileBasedRealm/orgadmin"/>
+      <variable name="odm.resExecutors.user1" value="user:o=defaultWIMFileBasedRealm/orgadmin"/>
 
-      <variable name="odm.rtsAdministrators.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=LTI,C=US"/>
-      <variable name="odm.rtsInstallers.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=LTI,C=US"/>
-      <variable name="odm.rtsConfigManagers.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=LTI,C=US"/>
-      <variable name="odm.resAdministrators.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=LTI,C=US"/>
-      <variable name="odm.resDeployers.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=LTI,C=US"/>
-      <variable name="odm.resMonitors.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=LTI,C=US"/>
-      <variable name="odm.resExecutors.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=LTI,C=US"/>
+      <variable name="odm.rtsAdministrators.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=IBM,C=US"/>
+      <variable name="odm.rtsInstallers.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=IBM,C=US"/>
+      <variable name="odm.rtsConfigManagers.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=IBM,C=US"/>
+      <variable name="odm.resAdministrators.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=IBM,C=US"/>
+      <variable name="odm.resDeployers.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=IBM,C=US"/>
+      <variable name="odm.resMonitors.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=IBM,C=US"/>
+      <variable name="odm.resExecutors.group1" value="group:o=defaultWIMFileBasedRealm/cn=P8Admins,ou=Groups,O=IBM,C=US"/>
 </server>

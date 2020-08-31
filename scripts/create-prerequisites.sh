@@ -72,7 +72,17 @@ oc apply -f ../FNCM/configuration/graphql_volume.yaml
 #make sure you have updated the common admin user (ltiadmin in this case) for the org and also added it in LDAP.
 # Otherwise use umsadmin as the user with all roles and update that in the sample-webSecurity-OIDC-ums
 # the group P8Admins is part of default LDAP.ldif file 
-kubectl create secret generic mywebsecuritysecret --from-file=webSecurity.xml=../ODM/configuration/security/sample-webSecurity-OIDC-ums.xml
+kubectl create secret generic odm-ums-websecurity-secret --from-file=webSecurity.xml=../ODM/configuration/security/sample-webSecurity-OIDC-ums.xml
+
+
+
+######################## BAI  ########################
+
+# change icp4adeploy to actual value of CR_NAME if not using default
+oc adm policy add-scc-to-user privileged -z icp4adeploy-bai-psp-sa
+oc adm policy add-scc-to-user privileged -z default
+oc apply -f ../BAI/configuration/bai-psp.yaml
+
 
 ############# BAW ##########
 
