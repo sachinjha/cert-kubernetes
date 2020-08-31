@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "8e0ffce1-d144-46a2-8fda-ae1f28fc5176",
+		"name": "ums-generic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ums-regi",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "umsadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ums.<HOSTNAME_SUFFIX>/oidc/endpoint/ums/registration",
+					"protocol": "https",
+					"host": [
+						"ums",
+						"<HOSTNAME_SUFFIX>"
+					],
+					"path": [
+						"oidc",
+						"endpoint",
+						"ums",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ums-regi",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "umsadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"client_id\":\"icp4adeploy-odm-oidc-client-id\",\n\"client_secret\":\"icp4adeploy-odm-oidc-client-id-secret-value\",\n\"redirect_uris\":[\"https://decisioncenter.odm.icp4adeploy.<HOSTNAME_SUFFIX>/oidcclient/redirect/odm\",\"https://decisionrunner.odm.icp4adeploy.<HOSTNAME_SUFFIX>/oidcclient/redirect/odm\",\"https://decisionserverconsole.odm.icp4adeploy.<HOSTNAME_SUFFIX>/oidcclient/redirect/odm\",\"https://decisionserverruntime.odm.icp4adeploy.<HOSTNAME_SUFFIX>/oidcclient/redirect/odm\",\"https://127.0.0.1:9081/oidcCallback\",\"https://127.0.0.1:9082/oidcCallback\",\"https://127.0.0.1:9083/oidcCallback\",\"https://127.0.0.1:9084/oidcCallback\",\"https://127.0.0.1:9085/oidcCallback\"],\n\"scope\":\"openid profile email\",\n\"grant_types\":[\"authorization_code\",\"client_credentials\",\"implicit\",\"refresh_token\",\"urn:ietf:params:oauth:grant-type:jwt-bearer\",\"password\"],\n\"response_types\":[\"code\",\"token\",\"id_token\"],\n\"application_type\":\"web\",\n\"subject_type\":\"public\",\n\"preauthorized_scope\":\"openid profile email\",\n\"introspect_tokens\":true,\n\"allow_regexp_redirects\":true\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ums.<HOSTNAME_SUFFIX>/oidc/endpoint/ums/registration",
+					"protocol": "https",
+					"host": [
+						"ums",
+						"<HOSTNAME_SUFFIX>"
+					],
+					"path": [
+						"oidc",
+						"endpoint",
+						"ums",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
