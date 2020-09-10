@@ -93,5 +93,6 @@ oc apply -f
 oc create serviceaccount ibm-pfs-es-service-account
 oc adm policy add-scc-to-user privileged -z ibm-pfs-es-service-account
 oc apply -f ../BAW/configuration/encryption-key-secret.yaml
+oc apply -f ../BAW/configuration/network-shared-directory-pvc.yaml
 
 
