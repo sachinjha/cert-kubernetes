@@ -277,6 +277,31 @@ spec:
       database_name: "OS1DB"
       ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521"
       database_port: "50000"
+     - dc_database_type: "db2" ## Provide the database type from your infrastructure.  The possible values are "db2" or "db2HADR" or "oracle".  This should be the same as the 
+      ## The OS1 non-XA datasource name.  The default value is "FNDSDOS".
+      dc_common_os_datasource_name: "FNDSDOS"
+      ## The OS1 XA datasource name.  The default value is "FNDSDOSXA".
+      dc_common_os_xa_datasource_name: "FNDSDOSXA"
+      ## Provide the database server name or IP address of the database server.  This should be the same as the 
+      ## GCD configuration above.
+      database_servername: "<DB2 server>"
+      ## Provide the name of the database for the object store 1 for CPE.  For example: "OS1DB"
+      database_name: "DOSDB"
+      ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521"
+      database_port: "50000"
+    - dc_database_type: "db2" ## Provide the database type from your infrastructure.  The possible values are "db2" or "db2HADR" or "oracle".  This should be the same as the 
+      ## The OS1 non-XA datasource name.  The default value is "FNDSTOS".
+      dc_common_os_datasource_name: "FNDSTOS"
+      ## The OS1 XA datasource name.  The default value is "FNDSTOSXA".
+      dc_common_os_xa_datasource_name: "FNDSTOSXA"
+      ## Provide the database server name or IP address of the database server.  This should be the same as the 
+      ## GCD configuration above.
+      database_servername: "<DB2 server>"
+      ## Provide the name of the database for the object store 1 for CPE.  For example: "OS1DB"
+      database_name: "TOSDB"
+      ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521"
+      database_port: "50000"
+   
     ## The database configuration for ICN (Navigator) - aka BAN (Business Automation Navigator)
     dc_icn_datasource:
       ## Provide the database type from your infrastructure.  The possible values are "db2" or "db2HADR" or "oracle".  This should be the same as the 
@@ -300,7 +325,7 @@ spec:
       ## Provide the names of the TENANT databases for ACA.
       tenant_databases:
       - "CATENANT"
-      - "TENANT2"
+
       ## Provide the database server port.  For Db2, the default is "50000".   For Oracle, the default is "1521".
       database_port: "50000"
       ## Enable SSL/TLS for database communication. Refer to Knowledge Center for more info.
@@ -851,7 +876,7 @@ spec:
     ## Workflow server service type.
     service_type: "Route"
     ## Workflow server hostname
-    hostname: ""
+    hostname: "baw1.<hostname_suffix>"
     ## Workflow server port
     port: 443
     ## Workflow server nodeport
@@ -863,9 +888,9 @@ spec:
     ## Workflow server replica count
     replicas: 1
     ## Provide Workflow server default administrator ID
-    admin_user: "<Required>"  ##SACHINKJ - NOT SURE.
+    admin_user: "bawadmin"  
     ## The name of Workflow server admin secret
-    admin_secret_name: "baw-admin-secret"   ##SACHINKJ - NOT SURE
+    admin_secret_name: "baw-admin-secret"   
     ## Specify whether to use the built-in monitoring capability
     monitor_enabled: false
 
@@ -950,7 +975,7 @@ spec:
       ## Object Store name for content integration
       object_store_name: "OS01"
       ## Admin secret for content integration
-      cpe_admin_secret: ""   ## SACHINKJ NOT SURE ABOUT KEYS TO USE
+      cpe_admin_secret: ""   ## operator identifies it automatically. no need to set.
 
     ## The configuration for case
     case:
@@ -972,7 +997,7 @@ spec:
       connection_point_name_tos: "cpe_conn_tos"
 
       ## PVC name for CASE network shared directory
-      network_shared_directory_pvc: "<Required>"
+      network_shared_directory_pvc: "network-shared-directory"
       ## The custom package names if need to install custom package, the value format like "package1.zip, package2,zip"
       custom_package_names: ""
       ## The custom extension names if need to install custom extension, the value format like "extension1.zip, extension2,zip"
@@ -986,7 +1011,7 @@ spec:
     ## Workflow center configuration
     workflow_center:
       ## The URL of workflow center
-      url: "baw.lti-gsilab-ibmcloud.com"
+      url: "<hostname of workflow center>"
       # The secret name of workflow center that contains username and password
       secret_name: ""
       # The hearbeat interval(seconds) to connect to workflow center
