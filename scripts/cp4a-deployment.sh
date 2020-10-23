@@ -21,7 +21,7 @@ DOCKER_RES_SECRET_NAME="admin.registrykey"
 DOCKER_REG_USER=""
 if [[ $1 == "dev" || $1 == "review" ]]
 then
-    DOCKER_REG_SERVER="cp.stg.icr.io"
+    DOCKER_REG_SERVER="cp.icr.io"
 else
     DOCKER_REG_SERVER="cp.icr.io"
 fi
@@ -2332,6 +2332,8 @@ function apply_pattern_cr(){
 
     ${SED_COMMAND_FORMAT} ${FOUNDATION_PATTERN_FILE_TMP}
     cp -rf ${FOUNDATION_PATTERN_FILE_TMP} ${FOUNDATION_PATTERN_FILE_BAK}
+    
+    ### sachinkj commented below 
     if [[ "$DEPLOYMENT_TYPE" == "demo" && "$INSTALLATION_TYPE" == "new" && $1 != "review" ]];then   
         ${CLI_CMD} delete -f ${FOUNDATION_PATTERN_FILE_BAK} >/dev/null 2>&1
         sleep 5 

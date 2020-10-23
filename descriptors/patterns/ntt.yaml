@@ -1,0 +1,146 @@
+apiVersion: icp4a.ibm.com/v1
+kind: ICP4ACluster
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"icp4a.ibm.com/v1","kind":"ICP4ACluster","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"ibm-dba","app.kubernetes.io/managed-by":"ibm-dba","app.kubernetes.io/name":"ibm-dba","release":"20.0.2"},"name":"icp4adeploy","namespace":"cp4auto2"},"spec":{"appVersion":"20.0.2","bastudio_configuration":{"admin_secret_name":"{{ meta.name }}-bas-admin-secret","admin_user":"db2inst1","database":{"alternative_host":null,"alternative_port":null,"host":"161.202.246.219","name":"BASTUDIO","port":"50000","type":"db2"},"playback_server":{"admin_secret_name":"playback-server-admin-secret","admin_user":"db2inst1","database":{"alternative_host":null,"alternative_port":null,"host":"161.202.246.219","name":"AESTUDIO","port":"50000","type":"db2"}}},"datasource_configuration":{"dc_ca_datasource":{"database_name":"BASECA","database_port":"50000","database_servername":"161.202.246.219","dc_database_ssl_enabled":false,"dc_database_type":"db2","tenant_databases":["CATENANT"]},"dc_icn_datasource":{"database_name":"ICNDB","database_port":"50000","database_servername":"161.202.246.219","dc_common_icn_datasource_name":"ECMClientDS","dc_database_type":"db2"},"dc_ums_datasource":{"dc_ums_oauth_alternate_hosts":null,"dc_ums_oauth_alternate_ports":null,"dc_ums_oauth_driverfiles":null,"dc_ums_oauth_host":"161.202.246.219","dc_ums_oauth_name":"UMSDB","dc_ums_oauth_port":"50000","dc_ums_oauth_schema":"OAuthDBSchema","dc_ums_oauth_ssl":false,"dc_ums_oauth_ssl_secret_name":null,"dc_ums_oauth_type":"db2","dc_ums_teamserver_alternate_hosts":null,"dc_ums_teamserver_alternate_ports":null,"dc_ums_teamserver_driverfiles":null,"dc_ums_teamserver_host":"161.202.246.219","dc_ums_teamserver_name":"UMSDB","dc_ums_teamserver_port":"50000","dc_ums_teamserver_ssl":false,"dc_ums_teamserver_ssl_secret_name":null,"dc_ums_teamserver_type":"db2"}},"ldap_configuration":{"lc_bind_secret":"ldap-bind-secret","lc_ldap_base_dn":"o=IBM,c=US","lc_ldap_group_base_dn":"o=IBM,c=US","lc_ldap_group_display_name_attr":"cn","lc_ldap_group_member_id_map":"groupofnames:member","lc_ldap_group_membership_search_filter":"(|(\u0026(objectclass=groupofnames)(member={0}))(\u0026(objectclass=groupofuniquenames)(uniquemember={0})))","lc_ldap_group_name_attribute":"*:cn","lc_ldap_port":"389","lc_ldap_server":"161.202.246.219","lc_ldap_ssl_enabled":false,"lc_ldap_ssl_secret_name":"\u003cRequired\u003e","lc_ldap_user_display_name_attr":"cn","lc_ldap_user_name_attribute":"*:cn","lc_selected_ldap_type":"IBM Security Directory Server"},"navigator_configuration":{"ban_secret_name":"ibm-ban-secret","no_log":false},"shared_configuration":{"image_pull_secrets":["admin.registrykey"],"images":{"dbcompatibility_init_container":{"repository":"cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer","tag":"20.0.2"},"keytool_init_container":{"repository":"cp.icr.io/cp/cp4a/ums/dba-keytool-initcontainer","tag":"20.0.2"},"keytool_job_container":{"repository":"cp.icr.io/cp/cp4a/ums/dba-keytool-jobcontainer","tag":"20.0.2"},"pull_policy":"IfNotPresent","umsregistration_initjob":{"repository":"cp.icr.io/cp/cp4a/aae/dba-umsregistration-initjob","tag":"20.0.2"}},"root_ca_secret":"icp4a-root-ca","sc_deployment_hostname_suffix":"automation.161.202.242.130.nip.io","sc_deployment_license":"non-production","sc_deployment_patterns":"foundation,contentanalyzer","sc_deployment_platform":"OCP","sc_deployment_type":"enterprise","sc_image_repository":"cp.icr.io","sc_optional_components":"ums","storage_configuration":{"sc_fast_file_storage_classname":"cp4a-file-retain-gold-gid","sc_medium_file_storage_classname":"cp4a-file-retain-silver-gid","sc_slow_file_storage_classname":"cp4a-file-retain-bronze-gid"},"trusted_certificate_list":[]},"ums_configuration":{"images":{"ums":{"repository":"cp.icr.io/cp/cp4a/ums/ums","tag":"20.0.2"}}}}}
+  creationTimestamp: "2020-09-05T18:07:25Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: ibm-dba
+    app.kubernetes.io/managed-by: ibm-dba
+    app.kubernetes.io/name: ibm-dba
+    release: 20.0.2
+  name: icp4adeploy
+  namespace: cp4auto2
+  resourceVersion: "6100308"
+  selfLink: /apis/icp4a.ibm.com/v1/namespaces/cp4auto2/icp4aclusters/icp4adeploy
+  uid: c7dfdd89-d77c-4a5e-ae2c-257191bc6d66
+spec:
+  appVersion: 20.0.2
+  bastudio_configuration:
+    admin_secret_name: '{{ meta.name }}-bas-admin-secret'
+    admin_user: db2inst1
+    database:
+      alternative_host: null
+      alternative_port: null
+      host: 161.202.246.219
+      name: BASTUDIO
+      port: "50000"
+      type: db2
+    playback_server:
+      admin_secret_name: playback-server-admin-secret
+      admin_user: db2inst1
+      database:
+        alternative_host: null
+        alternative_port: null
+        host: 161.202.246.219
+        name: AESTUDIO
+        port: "50000"
+        type: db2
+  datasource_configuration:
+    dc_ca_datasource:
+      database_name: BASECA
+      database_port: "50000"
+      database_servername: 161.202.246.219
+      dc_database_ssl_enabled: false
+      dc_database_type: db2
+      tenant_databases:
+      - CATENANT
+    dc_icn_datasource:
+      database_name: ICNDB
+      database_port: "50000"
+      database_servername: 161.202.246.219
+      dc_common_icn_datasource_name: ECMClientDS
+      dc_database_type: db2
+    dc_ums_datasource:
+      dc_ums_oauth_alternate_hosts: null
+      dc_ums_oauth_alternate_ports: null
+      dc_ums_oauth_driverfiles: null
+      dc_ums_oauth_host: 161.202.246.219
+      dc_ums_oauth_name: UMSDB
+      dc_ums_oauth_port: "50000"
+      dc_ums_oauth_schema: OAuthDBSchema
+      dc_ums_oauth_ssl: false
+      dc_ums_oauth_ssl_secret_name: null
+      dc_ums_oauth_type: db2
+      dc_ums_teamserver_alternate_hosts: null
+      dc_ums_teamserver_alternate_ports: null
+      dc_ums_teamserver_driverfiles: null
+      dc_ums_teamserver_host: 161.202.246.219
+      dc_ums_teamserver_name: UMSDB
+      dc_ums_teamserver_port: "50000"
+      dc_ums_teamserver_ssl: false
+      dc_ums_teamserver_ssl_secret_name: null
+      dc_ums_teamserver_type: db2
+  ldap_configuration:
+    lc_bind_secret: ldap-bind-secret
+    lc_ldap_base_dn: o=IBM,c=US
+    lc_ldap_group_base_dn: o=IBM,c=US
+    lc_ldap_group_display_name_attr: cn
+    lc_ldap_group_member_id_map: groupofnames:member
+    lc_ldap_group_membership_search_filter: (|(&(objectclass=groupofnames)(member={0}))(&(objectclass=groupofuniquenames)(uniquemember={0})))
+    lc_ldap_group_name_attribute: '*:cn'
+    lc_ldap_port: "389"
+    lc_ldap_server: 161.202.246.219
+    lc_ldap_ssl_enabled: false
+    lc_ldap_ssl_secret_name: <Required>
+    lc_ldap_user_display_name_attr: cn
+    lc_ldap_user_name_attribute: '*:cn'
+    lc_selected_ldap_type: IBM Security Directory Server
+  navigator_configuration:
+    ban_secret_name: ibm-ban-secret
+    no_log: false
+  shared_configuration:
+    image_pull_secrets:
+    - admin.registrykey
+    images:
+      dbcompatibility_init_container:
+        repository: cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer
+        tag: 20.0.2
+      keytool_init_container:
+        repository: cp.icr.io/cp/cp4a/ums/dba-keytool-initcontainer
+        tag: 20.0.2
+      keytool_job_container:
+        repository: cp.icr.io/cp/cp4a/ums/dba-keytool-jobcontainer
+        tag: 20.0.2
+      pull_policy: IfNotPresent
+      umsregistration_initjob:
+        repository: cp.icr.io/cp/cp4a/aae/dba-umsregistration-initjob
+        tag: 20.0.2
+    root_ca_secret: icp4a-root-ca
+    sc_deployment_hostname_suffix: automation.161.202.242.130.nip.io
+    sc_deployment_license: non-production
+    sc_deployment_patterns: foundation,contentanalyzer
+    sc_deployment_platform: OCP
+    sc_deployment_type: enterprise
+    sc_image_repository: cp.icr.io
+    sc_optional_components: ums
+    storage_configuration:
+      sc_fast_file_storage_classname: cp4a-file-retain-gold-gid
+      sc_medium_file_storage_classname: cp4a-file-retain-silver-gid
+      sc_slow_file_storage_classname: cp4a-file-retain-bronze-gid
+    trusted_certificate_list: []
+  ums_configuration:
+    images:
+      ums:
+        repository: cp.icr.io/cp/cp4a/ums/ums
+        tag: 20.0.2
+status:
+  conditions:
+  - ansibleResult:
+      changed: 34
+      completion: 2020-09-07T07:04:29.755573
+      failures: 0
+      ok: 955
+      skipped: 845
+    lastTransitionTime: "2020-09-07T07:04:30Z"
+    message: unknown playbook failure
+    reason: Failed
+    status: "False"
+    type: Failure
+  - lastTransitionTime: "2020-09-07T07:04:30Z"
+    message: Running reconciliation
+    reason: Running
+    status: "True"
+    type: Running

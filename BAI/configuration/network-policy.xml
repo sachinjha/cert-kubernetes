@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2020-08-11T07:05:04Z"
+  generation: 3
+  labels:
+    app: icp4adeploy-ibm-bai-prod-egress
+    app.kubernetes.io/instance: icp4adeploy
+    release: icp4adeploy
+  name: icp4adeploy-ibm-bai-prod-egress
+  namespace: automation
+spec:
+  egress:
+  - {}
+  podSelector:
+    matchLabels:
+      app: ibm-business-automation-insights
+  policyTypes:
+  - Egress
