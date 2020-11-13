@@ -9,7 +9,7 @@ spec:
     storage: 20Gi
   nfs:
     path: /opt/nfs2/cmis/configDropin/overrides
-    server: 158.176.66.252
+    server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cmis-cfgstore-pv
 ---
@@ -42,7 +42,7 @@ spec:
     storage: 20Gi
   nfs:
     path: /opt/nfs2/cmis/logs
-    server: 158.176.66.252
+    server: <NFS SERVER>
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cmis-logstore-pv
 ---

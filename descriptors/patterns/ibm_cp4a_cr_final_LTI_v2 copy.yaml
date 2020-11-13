@@ -16,12 +16,12 @@ metadata:
     app.kubernetes.io/instance: ibm-dba
     app.kubernetes.io/managed-by: ibm-dba
     app.kubernetes.io/name: ibm-dba
-    release: 20.0.2
+    release: 20.0.2.1
 spec:
   ##########################################################################
   ## This section contains the shared configuration for all CP4A components #
   ##########################################################################
-  appVersion: 20.0.2
+  appVersion: 20.0.2.1
   #################################################################################################################
   ##  The contents of this template CR file reflect only the specific parameters and configuration 
   ##  settings applicable to the represented ICP4A capability. 
@@ -55,16 +55,16 @@ spec:
     images:
       keytool_job_container:
         repository: cp.icr.io/cp/cp4a/ums/dba-keytool-jobcontainer
-        tag: 20.0.2
+        tag: 20.0.2-IF001
       dbcompatibility_init_container:
         repository: cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer
-        tag: 20.0.2
+        tag: 20.0.2-IF001
       keytool_init_container:
         repository: cp.icr.io/cp/cp4a/ums/dba-keytool-initcontainer
-        tag: 20.0.2
+        tag: 20.0.2-IF001
       umsregistration_initjob:
         repository: cp.icr.io/cp/cp4a/aae/dba-umsregistration-initjob
-        tag: 20.0.2
+        tag: 20.0.2-IF001
       ## All CP4A components should use this pull_policy as the default, but it can override by each component
       pull_policy: IfNotPresent
     ## All CP4A components must use/share the root_ca_secret in order for integration    
@@ -112,19 +112,19 @@ spec:
     kafka_configuration:
       # Comma-separated list of hosts:port for connection to the Kafka cluster.
       # This field is mandatory for any Kafka configuration.
-      bootstrap_servers: minimal-non-prod-kafka-bootstrap-eventstreams.cloud-automation-ocp43-a8d1146bebf544cf2e64c559df1437f6-0000.eu-gb.containers.appdomain.cloud:443
+      bootstrap_servers: <NFS SERVER>:9092
       # Value for the Kafka security.protocol property
       # Valid values: PLAINTEXT, SSL, SASL_PLAINTEXT, SASL_SSL. Default: PLAINTEXT.
-      security_protocol: SASL_SSL
+      security_protocol: PLAINTEXT
       # Value for the Kafka sasl.mechanism property
       # Valid values: PLAIN, SCRAM-SHA-512. Default: PLAIN.
-      sasl_mechanism: SCRAM-SHA-512
+      sasl_mechanism: PLAIN
       # If the Kafka server requires authentication or uses SSL communications, the value of this field
       # must provide the name of a secret that holds the following keys as base64-encoded strings:
       # kafka-username: Kafka username; leave empty if no authentication
       # kafka-password: Kafka password; leave empty if no authentication
       # kafka-server-certificate: server certificate for SSL communications; leave empty if SSL protocol is not used
-      connection_secret_name: icp4a-kafka-connection-secret
+      #connection_secret_name: icp4a-kafka-connection-secret
     ## Specify the RunAsUser for the security context of the pod.  This is usually a numeric value that correponds to a user ID.
     sc_run_as_user:
     ## Shared encryption key secret name that is used for Workstream Services and Process Federation Server integration.
@@ -436,7 +436,7 @@ spec:
     images:
       ums:
         repository: cp.icr.io/cp/cp4a/ums/ums
-        tag: 20.0.2
+        tag: 20.0.2-IF001
     # your external UMS host name, only required if there is no sc_deployment_hostname_suffix given
     hostname:
     port: 443

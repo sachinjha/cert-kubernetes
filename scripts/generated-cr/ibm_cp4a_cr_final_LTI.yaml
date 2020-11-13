@@ -146,7 +146,7 @@ spec:
     ## The possible values are: "IBM Security Directory Server" or "Microsoft Active Directory"
     lc_selected_ldap_type: "IBM Security Directory Server"
     ## The name of the LDAP server to connect
-    lc_ldap_server: "158.176.66.252"
+    lc_ldap_server: "<NFS SERVER>"
     ## The port of the LDAP server to connect.  Some possible values are: 389, 636, etc.
     lc_ldap_port: "389"
     ## The LDAP bind secret for LDAP authentication.  The secret is expected to have ldapUsername and ldapPassword keys.  Refer to Knowledge Center for more info.
@@ -222,7 +222,7 @@ spec:
       ## are set.
       dc_ums_oauth_type: "db2"
       ## Provide the database server name or IP address of the database server.
-      dc_ums_oauth_host: "158.176.66.252"
+      dc_ums_oauth_host: "<NFS SERVER>"
       ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521".
       dc_ums_oauth_port: "50000"
       ## Provide the name of the database for UMS.  For example: "UMSDB"
@@ -238,7 +238,7 @@ spec:
       ## other datasource configuration above. Db2 with HADR is automatically activated if dc_ums_teamserver_alternate_hosts and dc_ums_teamserver_alternate_ports
       ## are set.
       dc_ums_teamserver_type: "db2"
-      dc_ums_teamserver_host: "158.176.66.252"
+      dc_ums_teamserver_host: "<NFS SERVER>"
       ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521".
       dc_ums_teamserver_port: "50000"
       ## Provide the name of the database for UMS teamserver.  For example: "UMSDB"
@@ -257,7 +257,7 @@ spec:
       ## The GCD XA datasource name. The default value is "FNGCDDSXA".
       dc_common_gcd_xa_datasource_name: "FNGCDDSXA"
       ## Provide the database server name or IP address of the database server.
-      database_servername: "158.176.66.252"
+      database_servername: "<NFS SERVER>"
       ## Provide the name of the database for the GCD for CPE.  For example: "GCDDB"
       database_name: "GCDDB"
       ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521"
@@ -288,7 +288,7 @@ spec:
       dc_common_os_xa_datasource_name: "FNOS1DSXA"
       ## Provide the database server name or IP address of the database server.  This should be the same as the 
       ## GCD configuration above.
-      database_servername: "158.176.66.252"
+      database_servername: "<NFS SERVER>"
       ## Provide the name of the database for the object store 1 for CPE.  For example: "OS1DB"
       database_name: "OS1DB"
       ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521"
@@ -315,7 +315,7 @@ spec:
       dc_database_type: "db2"
       ## Provide the ICN datasource name.  The default value is "ECMClientDS".
       dc_common_icn_datasource_name: "ECMClientDS"
-      database_servername: "158.176.66.252"
+      database_servername: "<NFS SERVER>"
       ## Provide the database server port.  For Db2, the default is "50000".  For Oracle, the default is "1521"
       database_port: "50000"
       ## Provide the name of the database for ICN (Navigator).  For example: "ICNDB"
@@ -341,7 +341,7 @@ spec:
       ## Provide the database type from your infrastructure.  The possible values are "db2" or "db2HADR" or "oracle".    
       dc_database_type: "db2"
       ## Provide the primary database server name and if your database server name cannot be resolvable by DNS, then provide the corresponding IP address for the `database_IP` parameter below.
-      database_servername: "158.176.66.252"
+      database_servername: "<NFS SERVER>"
       ## Provide the name of the BASE database for ACA.  For example: "BASECA"
       database_name: "BASECA"
       ## Provide the names of the TENANT databases for ACA.
@@ -391,7 +391,7 @@ spec:
     admin_user: "ltiadmin"
     database:
       #Provide the database server hostname for BAStudio use
-      host: "158.176.66.252"
+      host: "<NFS SERVER>"
       #Provide the database name for BAStudio use
       # The database provided should be created by the BAStudio SQL script template.
       name: "BASTUDIO"
@@ -411,7 +411,7 @@ spec:
       admin_user: "ltiadmin"
       database:
         #Provide the database server hostname for playback application engine use
-        host: "158.176.66.252"
+        host: "<NFS SERVER>"
         #Provide the database name for playback application engine use
         name: "AESTUDIO"
         #Provide the database server port for playback application engine use
