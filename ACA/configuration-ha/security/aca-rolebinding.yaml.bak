@@ -4,7 +4,7 @@ metadata:
   name: aca-rolebinding
 subjects:
 - kind: Group
-  name: system:serviceaccounts:automation
+  name: system:serviceaccounts:$KUBE_NAME_SPACE
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role #this must be Role or ClusterRole

@@ -9,7 +9,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/cpe/configDropin/overrides
-    server: <NFS SERVER>
+    server: 158.176.66.252
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-cfgstore-pv
 ---
@@ -42,7 +42,7 @@ spec:
     storage: 20Gi
   nfs:
     path: /opt/nfs2/cpe/logs
-    server: <NFS SERVER>
+    server: 158.176.66.252
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-logstore-pv
 ---
@@ -75,7 +75,7 @@ spec:
     storage: 20Gi
   nfs:
     path: /opt/nfs2/cpe/cpefnlogstore
-    server: <NFS SERVER>
+    server: 158.176.66.252
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-fnlogstore-pv
 ---
@@ -108,7 +108,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/cpe/bootstrap
-    server: <NFS SERVER>
+    server: 158.176.66.252
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-bootstrap-pv
 ---
@@ -141,7 +141,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/cpe/textext
-    server: <NFS SERVER>
+    server: 158.176.66.252
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-textext-pv
 ---
@@ -174,7 +174,7 @@ spec:
     storage: 1Gi
   nfs:
     path: /opt/nfs2/cpe/icmrules
-    server: <NFS SERVER>
+    server: 158.176.66.252
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-icmrules-pv
 ---
@@ -207,7 +207,7 @@ spec:
     storage: 200Gi
   nfs:
     path: /opt/nfs2/cpe/asa
-    server: <NFS SERVER>
+    server: 158.176.66.252
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-filestore-pv
 ---
