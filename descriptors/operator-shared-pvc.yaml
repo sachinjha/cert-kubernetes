@@ -20,7 +20,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: cp4a-file-retain-bronze-gid 
+  storageClassName: <StorageClassName>
   resources:
     requests:
       storage: 1Gi
