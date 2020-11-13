@@ -1,0 +1,51 @@
+*******************************************************
+Wed Jul 29 19:52:02 IST 2020 non-bai deployment was selected
+Wed Jul 29 19:52:02 IST 2020 Creating Common-Services V3.4 Operand Request for non-BAI deployments on OCP 4.3 ..
+Wed Jul 29 19:52:02 IST 2020 The installation of Common Services Release 3.4 has started
+Wed Jul 29 19:52:02 IST 2020 Defining sources for Release 3.4 of IBM Common Services.
+operatorsource.operators.coreos.com/opencloud-operators created
+Wed Jul 29 19:53:12 IST 2020 Creating Operator Group for Release 3.4...
+operatorgroup.operators.coreos.com/operatorgroup created
+Wed Jul 29 19:53:17 IST 2020 Creating Operator Subscription for Release 3.4...
+subscription.operators.coreos.com/ibm-common-service-operator created
+Wed Jul 29 19:53:22 IST 2020 waiting on Operator..sleeping...
+Wed Jul 29 19:55:22 IST 2020 Creating Operator Request CR for Release 3.4...
+operandrequest.operator.ibm.com/common-service created
+operandconfig.operator.ibm.com/common-service patched
+
+[1m*******************************************************[0m
+[1m                    Summary of input                   [0m
+[1m*******************************************************[0m
+[1;31m1. Cloud platform to deploy: OCP >=4.4+[0m
+[1;31m2. Project to deploy: common-services, ibm-common-services[0m
+[1;31m3. CS Operators to be Installed: Licensing and Metering + dependencies [0m
+[1m*******************************************************[0m
+Done
+*******************************************************
+Wed Aug  5 16:21:46 IST 2020 bai deployment was selected
+Wed Aug  5 16:21:46 IST 2020 Creating Common Services V3.4 Operand Request for BAI deployments on OCP 4.3+ ..\x1B[0m
+Wed Aug  5 16:21:46 IST 2020 The installation of Common Services Release 3.4 has started
+Wed Aug  5 16:21:46 IST 2020 Defining sources for Release 3.4 of IBM Common Services.
+operatorsource.operators.coreos.com/opencloud-operators unchanged
+Wed Aug  5 16:22:52 IST 2020 Creating Operator Group for Release 3.4...
+operatorgroup.operators.coreos.com/operatorgroup created
+Wed Aug  5 16:22:58 IST 2020 Creating Operator Subscription for Release 3.4...
+subscription.operators.coreos.com/ibm-common-service-operator created
+Wed Aug  5 16:23:02 IST 2020 waiting on Operator..sleeping...
+Wed Aug  5 16:25:02 IST 2020 Creating Operator Request CR for Release 3.4...
+operandrequest.operator.ibm.com/common-service created
+operandconfig.operator.ibm.com/common-service patched
+
+[1m*******************************************************[0m
+[1m                    Summary of input                   [0m
+[1m*******************************************************[0m
+[1;31m1. Cloud platform to deploy: OCP >=4.4+[0m
+[1;31m2. Project to deploy: common-services, ibm-common-services[0m
+[1;31m3. CS Operators to be Installed: Licensing and Metering + dependencies [0m
+[1m*******************************************************[0m
+Done
+*******************************************************
+Wed Sep 16 11:22:27 IST 2020 non-bai deployment was selected
+Wed Sep 16 11:22:27 IST 2020 Creating Common-Services V3.4 Operand Request for non-BAI deployments on OCP 4.3 ..
+Wed Sep 16 11:22:27 IST 2020 The installation of Common Services Release 3.4 has started
+Wed Sep 16 11:22:27 IST 2020 Defining sources for Release 3.4 of IBM Common Services.
